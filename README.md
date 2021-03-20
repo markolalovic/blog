@@ -1,6 +1,6 @@
 # blog
 
-This repository contains the source code of my blog generated using jekyll.
+This repository contains the source code of my blog generated using [jekyll](https://jekyllrb.com/).
 
 ## License
 
