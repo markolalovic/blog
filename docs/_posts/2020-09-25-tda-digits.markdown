@@ -171,6 +171,9 @@ For details on how to use the functions and classes see the Jupyter notebooks: `
 ## Acknowledgments
 This is part of the project I made for Summer School on Computational Topology and Topological Data Analysis held in Ljubljana. The project was presented by Primoz Skraba.
 
+## Licenses
+The source code is licensed [MIT](https://opensource.org/licenses/MIT). The website content is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
 ## References
 [1] A. Adcock, E. Carlsson, and G. Carlsson, “The Ring of Algebraic Functions on Persistence Bar Codes”, (2013), Homology, Homotopy and Applications
 [https://arxiv.org/abs/1304.0530](https://arxiv.org/abs/1304.0530)
