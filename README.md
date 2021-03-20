@@ -1,4 +1,4 @@
-# blog
+# My Blog
 This repository contains the source code of my blog generated using <a href="https://jekyllrb.com/" target="_blank">jekyll</a>.
 
 ## Licenses
