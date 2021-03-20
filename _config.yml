@@ -1,0 +1,17 @@
+# Site settings
+title: Marko Lalović
+email: marko@markolalovic.com
+description: >-
+  A blog.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # https://markolalovic.com
+twitter_username: MarkoLalovic
+github_username:  markolalovic
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Output settings
+# permalink: none
