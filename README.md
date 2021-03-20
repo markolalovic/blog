@@ -1,7 +1,5 @@
 # blog
+This repository contains the source code of my blog generated using <a href="https://jekyllrb.com/" target="_blank">jekyll</a>.
 
-This repository contains the source code of my blog generated using [jekyll](https://jekyllrb.com/).
-
-## License
-
-The content of the blog is licensed under a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) License.
+## Licenses
+The source code is licensed <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a>. The website content is licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>.
