@@ -4,12 +4,12 @@ title:  "Topological Features Applied to the MNIST Data Set"
 subtitle: "Extraction of topological features that can be used as an input to standard algorithms to obtain qualitative geometric information."
 author: Marko Lalović
 date:   2020-09-25 21:26:36 +0100
-image: /assets/posts/tda-digits/intro-figure.png
+image: /assets/posts/tda-digits/intro-figure.jpg
 categories: Topological-Data-Analysis Machine-Learning
 rtime: 8 min read
 ---
 <div class="images">
-  <img src="/assets/posts/tda-digits/intro-figure.png">
+  <img src="/assets/posts/tda-digits/intro-figure.jpg">
   <div class="label">
     <strong>Figure 1:</strong> Illustration of the main ideas. (Torus was drawn using <a target="_blank" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi library</a>.)
   </div>
