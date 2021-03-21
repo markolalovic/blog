@@ -15,4 +15,4 @@ plugins:
   - jekyll-feed
 
 # Output settings
-permalink: /blog/assets/posts/
+# permalink: /blog/assets/posts/
