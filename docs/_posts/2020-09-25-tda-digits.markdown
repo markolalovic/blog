@@ -5,7 +5,7 @@ subtitle: "Extraction of topological features that can be used as an input to st
 author: Marko Lalović
 date:   2020-09-25 21:26:36 +0100
 image: assets/posts/tda-digits/intro-figure.jpg
-categories: Topological-Data-Analysis Machine-Learning
+keywords: Topological-Data-Analysis Machine-Learning
 rtime: 5 min read
 ---
 <div class="images">

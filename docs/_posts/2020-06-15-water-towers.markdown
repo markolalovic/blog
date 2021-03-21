@@ -5,7 +5,7 @@ subtitle: "Finding the optimal arrangement of metal rings to reinforce the cylin
 author: Marko Lalović
 date:   2020-06-15 21:26:36 +0100
 image: assets/posts/water-towers/water-towers-small.jpg
-categories: Physics NYC Architecture
+keywords: Physics NYC Architecture
 rtime: 2 min read
 ---
 <div class="images">
