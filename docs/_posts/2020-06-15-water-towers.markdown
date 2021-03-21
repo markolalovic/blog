@@ -9,7 +9,7 @@ categories: Physics NYC Architecture
 rtime: 2 min read
 ---
 <div class="images">
-  <img src="blog/assets/posts/water-towers/water-towers.jpg">
+  <img src="/blog/assets/posts/water-towers/water-towers.jpg">
   <div class="label">
     <strong>Figure 1:</strong> Water towers in New York. (Source:  <a target="_blank" href="https://www.flickr.com/people/38782010@N00">takomabibelot</a>,
 <a target="_blank" href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>, edited by author.)

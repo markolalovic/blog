@@ -9,7 +9,7 @@ categories: Topological-Data-Analysis Machine-Learning
 rtime: 5 min read
 ---
 <div class="images">
-  <img src="blog/assets/posts/tda-digits/intro-figure.jpg">
+  <img src="/blog/assets/posts/tda-digits/intro-figure.jpg">
   <div class="label">
     <strong>Figure 1:</strong> Illustration of the main ideas. (Torus was drawn using <a target="_blank" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi library</a>.)
   </div>
