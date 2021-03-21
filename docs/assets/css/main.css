@@ -250,7 +250,6 @@ pre>code {
 }
 
 .site-header a:hover {
-    text-decoration: none;
     color: #5e5e5e;
 }
 
@@ -271,6 +270,10 @@ pre>code {
   text-decoration: underline;
 }
 
+.hovhov {
+  text-decoration: underline;
+}
+
 .site-nav {
     font-size: 21px;
     line-height: 56px;
@@ -278,6 +281,7 @@ pre>code {
     margin-bottom: 0;
     float: right;
     color: #424242;
+    padding: 0px 50px 0px 0px;
 }
 
 .site-nav,
