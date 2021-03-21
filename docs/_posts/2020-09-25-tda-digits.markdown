@@ -4,12 +4,12 @@ title:  "Topological Features Applied to the MNIST Data Set"
 subtitle: "Extraction of topological features that can be used as an input to standard algorithms to obtain qualitative geometric information."
 author: Marko Lalović
 date:   2020-09-25 21:26:36 +0100
-image: /assets/posts/tda-digits/intro-figure.jpg
+image: assets/posts/tda-digits/intro-figure.jpg
 categories: Topological-Data-Analysis Machine-Learning
 rtime: 5 min read
 ---
 <div class="images">
-  <img src="/assets/posts/tda-digits/intro-figure.jpg">
+  <img src="assets/posts/tda-digits/intro-figure.jpg">
   <div class="label">
     <strong>Figure 1:</strong> Illustration of the main ideas. (Torus was drawn using <a target="_blank" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi library</a>.)
   </div>
@@ -28,7 +28,7 @@ First, we explain the extraction of topological features on a simple example
 shown in **Figure 2**. Second, we present and evaluate the empirical classification results on a subset of the MNIST database. The aim is to demonstrate the classification potential of the technique and not to outperform the existing models for the classification of handwritten digits. For a more interesting example of using this technique on a clinical data set to classify hepatic lesions, see [<a href="https://arxiv.org/abs/1304.0530" target="_blank">1</a>].
 
 <div class="images">
-  <img src="/assets/posts/tda-digits/anim-compressed.gif">
+  <img src="assets/posts/tda-digits/anim-compressed.gif">
   <div class="label">
     <strong>Figure 2:</strong> An example of applying this technique on the image of a handwritten digit 8.
   </div>
@@ -82,7 +82,7 @@ The pre-processing steps used, shown in **Figure 3**, are the following:
 Given the simplex stream from the final pre-processing step, we compute the persistent homology to get the Betti barcodes shown in **Figure 4**. See also **Figure 2** which is using the same example.
 
 <div class="images">
-  <img src="/assets/posts/tda-digits/betti-barcodes.png" width="500">
+  <img src="assets/posts/tda-digits/betti-barcodes.png" width="500">
   <div class="label">
     <strong>Figure 4:</strong> Betti barcodes from the sweep to the top of the image of digit 8.
   </div>
@@ -117,7 +117,7 @@ Data set consisted of extracted topological features of 10000 images of handwrit
 We examine the common misclassifications.
 
 <div class="images">
-  <img src="/assets/posts/tda-digits/miss-2.png" width="500">
+  <img src="assets/posts/tda-digits/miss-2.png" width="500">
   <div class="label">
     <strong>Figure 5:</strong> Examples of number 2 being mistaken for number 0.
   </div>
@@ -126,7 +126,7 @@ We examine the common misclassifications.
 There were 3 examples of the number 2 being mistaken for number 0, shown in **Figure 5**. The reason is that the number 2 was written with a loop that appears in the region that is close to the loop in number 0.
 
 <div class="images">
-  <img src="/assets/posts/tda-digits/miss-5.png" width="500">
+  <img src="assets/posts/tda-digits/miss-5.png" width="500">
   <div class="label">
     <strong>Figure 6:</strong> Examples of number 5 being mistaken for number 2.
   </div>
@@ -135,7 +135,7 @@ There were 3 examples of the number 2 being mistaken for number 0, shown in **Fi
 For number 5 we got the lowest F1 score of 0.75. It was misclassified as number 2 in 32 examples in the test set. The first three examples are shown in **Figure 6**. This was expected since these two numbers are topologically the same with no topological features (e.g. loops) appearing in different regions.
 
 <div class="images">
-  <img src="/assets/posts/tda-digits/miss-8.png" width="500">
+  <img src="assets/posts/tda-digits/miss-8.png" width="500">
   <div class="label">
     <strong>Figure 7:</strong> Examples of number 8 being mistaken for number 4.
   </div>
@@ -182,9 +182,9 @@ This is part of the project I made for Summer School on Computational Topology a
 <a target="_blank" href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf">https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf</a>
 
 [mayavi-lib]: https://docs.enthought.com/mayavi/mayavi/
-[1_original]: /assets/posts/tda-digits/1_original-image.png
-[2_binary]: /assets/posts/tda-digits/2_binary-image.png
-[3_skeleton]: /assets/posts/tda-digits/3_skeleton.png
-[4_points]: /assets/posts/tda-digits/4_points.png
-[5_embedded-graph]: /assets/posts/tda-digits/5_embedded-graph.png
-[6_simplices]: /assets/posts/tda-digits/6_simplices.png
+[1_original]: assets/posts/tda-digits/1_original-image.png
+[2_binary]: assets/posts/tda-digits/2_binary-image.png
+[3_skeleton]: assets/posts/tda-digits/3_skeleton.png
+[4_points]: assets/posts/tda-digits/4_points.png
+[5_embedded-graph]: assets/posts/tda-digits/5_embedded-graph.png
+[6_simplices]: assets/posts/tda-digits/6_simplices.png

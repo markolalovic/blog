@@ -105,14 +105,3 @@ h_{4} = 1.36, \quad h_{5} = 2.11.
 $$
 
 The solution is shown in **Figure 2b**.
-
-<!-- The website content is licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>. -->
-
-
-[mayavi-lib]: https://docs.enthought.com/mayavi/mayavi/
-[1_original]: assets/posts/tda-digits/1_original-image.png
-[2_binary]: assets/posts/tda-digits/2_binary-image.png
-[3_skeleton]: assets/posts/tda-digits/3_skeleton.png
-[4_points]: assets/posts/tda-digits/4_points.png
-[5_embedded-graph]: assets/posts/tda-digits/5_embedded-graph.png
-[6_simplices]: assets/posts/tda-digits/6_simplices.png
