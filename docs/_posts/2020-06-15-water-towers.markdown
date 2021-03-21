@@ -6,7 +6,7 @@ author: Marko Lalović
 date:   2020-06-15 21:26:36 +0100
 image: /assets/posts/water-towers/water-towers-small.jpg
 categories: Physics NYC Architecture
-rtime: 4 min read
+rtime: 2 min read
 ---
 <div class="images">
   <img src="/assets/posts/water-towers/water-towers.jpg">

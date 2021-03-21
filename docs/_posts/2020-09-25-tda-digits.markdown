@@ -6,7 +6,7 @@ author: Marko Lalović
 date:   2020-09-25 21:26:36 +0100
 image: /assets/posts/tda-digits/intro-figure.jpg
 categories: Topological-Data-Analysis Machine-Learning
-rtime: 8 min read
+rtime: 5 min read
 ---
 <div class="images">
   <img src="/assets/posts/tda-digits/intro-figure.jpg">
@@ -171,18 +171,15 @@ For details on how to use the functions and classes see the Jupyter notebooks: `
 ## Acknowledgments
 This is part of the project I made for Summer School on Computational Topology and Topological Data Analysis held in Ljubljana. The project was presented by Primoz Skraba.
 
-## Licenses
-The source code is licensed <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a>. The website content is licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>.
-
 ## References
 [1] A. Adcock, E. Carlsson, and G. Carlsson, “The Ring of Algebraic Functions on Persistence Bar Codes”, (2013), Homology, Homotopy and Applications
-[https://arxiv.org/abs/1304.0530](https://arxiv.org/abs/1304.0530)
+<a target="_blank" href="https://arxiv.org/abs/1304.0530">https://arxiv.org/abs/1304.0530</a>
 
 [2] R. Bruel-Gabrielsson, B. J. Nelson, A. Dwaraknath, P. Skraba, L. J. Guibas, and G. Carlsson, “A Topology Layer for Machine Learning”, (2020), Proceedings of Machine Learning Research
-[https://arxiv.org/pdf/1905.12200.pdf](https://arxiv.org/pdf/1905.12200.pdf)
+<a target="_blank" href="https://arxiv.org/pdf/1905.12200.pdf">https://arxiv.org/pdf/1905.12200.pdf</a>
 
 [3] G. Carlsson, “Topology and data”, (2009), Bulletin of the American Mathematical Society
-[https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf](https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf)
+<a target="_blank" href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf">https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/S0273-0979-09-01249-X.pdf</a>
 
 [mayavi-lib]: https://docs.enthought.com/mayavi/mayavi/
 [1_original]: /assets/posts/tda-digits/1_original-image.png
