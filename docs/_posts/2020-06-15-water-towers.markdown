@@ -4,7 +4,7 @@ title:  "Some Math Behind Water Towers"
 subtitle: "Finding the optimal arrangement of metal rings to reinforce the cylindrical structure of a water tank."
 author: Marko Lalović
 date:   2020-06-15 21:26:36 +0100
-image: /assets/posts/water-towers/water-towers-small.jpg
+image: assets/posts/water-towers/water-towers-small.jpg
 categories: Physics NYC Architecture
 rtime: 2 min read
 ---
@@ -25,7 +25,7 @@ Since I did not find a derivation anywhere on the internet, I will describe my s
 Say we have a wooden water tank that we want to reinforce with 5 equal metal rings so that the wood does not give in to the water pressure. How would you arrange the metal rings?
 
 <div class="images">
-  <img src="/assets/posts/water-towers/drawing.svg">
+  <img src="assets/posts/water-towers/drawing.svg">
   <div class="label">
     <strong>Figure 2:</strong> Two examples of arrangements of metal rings.
   </div>
@@ -110,9 +110,9 @@ The solution is shown in **Figure 2b**.
 
 
 [mayavi-lib]: https://docs.enthought.com/mayavi/mayavi/
-[1_original]: /assets/posts/tda-digits/1_original-image.png
-[2_binary]: /assets/posts/tda-digits/2_binary-image.png
-[3_skeleton]: /assets/posts/tda-digits/3_skeleton.png
-[4_points]: /assets/posts/tda-digits/4_points.png
-[5_embedded-graph]: /assets/posts/tda-digits/5_embedded-graph.png
-[6_simplices]: /assets/posts/tda-digits/6_simplices.png
+[1_original]: assets/posts/tda-digits/1_original-image.png
+[2_binary]: assets/posts/tda-digits/2_binary-image.png
+[3_skeleton]: assets/posts/tda-digits/3_skeleton.png
+[4_points]: assets/posts/tda-digits/4_points.png
+[5_embedded-graph]: assets/posts/tda-digits/5_embedded-graph.png
+[6_simplices]: assets/posts/tda-digits/6_simplices.png
