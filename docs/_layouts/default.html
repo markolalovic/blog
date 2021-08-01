@@ -17,19 +17,28 @@
     </div>
 
     {% include footer.html %}
-    
+
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: { autoNumber: "AMS" },
+          tagSide: "right",
+          macros: {
+            norm:  ["{\\left\\lVert#1\\right\\rVert}", 1],
+            RR: "{\\bf R}",
+            bold: ["{\\bf #1}", 1]
+          }
+        },
         tex2jax: {
           inlineMath: [ ['$','$'], ["\\(","\\)"] ],
           processEscapes: true
         }
       });
     </script>
-
     <script type="text/javascript"
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+
 </body>
 
 </html>
