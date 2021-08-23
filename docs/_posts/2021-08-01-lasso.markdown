@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Lasso Dual"
-subtitle: "Derivation of Lasso solution from dual formulation using projection operator."
-author: Marko Lalović
+subtitle: "Derivation of the Lasso solution from dual formulation using projection operator and some non-obvious properties that follow from the geometry of the dual formulation."
+author: Marko Lalovic
 date:   2021-08-01 10:34:39 +0100
 image: assets/posts/lasso-dual/transformation-3d.png
-keywords: LASSO
-rtime: 2 min read
+keywords: LASSO, duality theory
+rtime: 3 min read
 ---
 <div class="images">
   <img src="/blog/assets/posts/lasso-dual/transformation-3d.svg">
@@ -28,7 +28,7 @@ $$
 
 This type of penalized regression is called Lasso; see Tibshirani's original paper [<a href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf" target="_blank">1</a>].
 
-We can show that solution $x^{\*}$ can be determined with the help of a projection operator. Some nice and non-obvious properties of the solution $x^{\*}$ follow from the geometry of the dual formulation. For example that $x^{\*}$ is non-expansive as a function of $y$. 
+In this post, we first derive the dual problem, then show that the solution $x^{\*}$ can be determined with the help of a projection operator. Some nice and non-obvious properties of the solution $x^{\*}$ follow from the geometry of the dual formulation. We finish with the observation that the Lasso solution is non-expansive as a function of $y$. This is not obvious and would probably be hard to show without the dual formulation.
 
 <!-- Section 1 -->
 ## Formulation of the dual problem
@@ -297,12 +297,11 @@ x^{*} = A^{-1} \left( y - P_{C}(y) \right)
 \end{equation}
 $$
 
-We notice that, since $P_{C}$ is a projection onto convex set $C$, see **Figure 3(a)**, it follows that $x^{\*}$ is also non-expansive as a function of $y$. This is not obvious and would probably be hard to show without the dual formulation.
-
+We notice that, since $P_{C}$ is a projection onto convex set $C$, it follows that $x^{\*}$ is also non-expansive as a function of $y$; see **Figure 3(a)** in contrast to **Figure 3(b)** showing projection onto non-convex set $N$. This is not obvious and would probably be hard to show without the dual formulation.
 
 | ![convex.svg][convex] | ![bean.svg][bean] |
 |:--:|:--:|
-| <span class="subfig">(a) Convex set $C$.</span> | <span class="subfig">(b) Non-convex set $C$.</span> |
+| <span class="subfig">(a) Convex set $C$.</span> | <span class="subfig">(b) Non-convex set $N$.</span> |
 
 <div class="images">
   <div class="label">

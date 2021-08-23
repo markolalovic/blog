@@ -2,10 +2,10 @@
 layout: post
 title:  "Some Math Behind Water Towers"
 subtitle: "Finding the optimal arrangement of metal rings to reinforce the cylindrical structure of a water tank."
-author: Marko Lalović
+author: Marko Lalovic
 date:   2020-06-15 21:26:36 +0100
 image: assets/posts/water-towers/water-towers-small.jpg
-keywords: Physics NYC Architecture
+keywords: Physics, NYC, architecture
 rtime: 2 min read
 ---
 <div class="images">

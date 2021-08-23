@@ -38,7 +38,7 @@ body {
     line-height: 1.5;
     font-weight: 300;
     color: #111;
-    background-color: #fdfdfd;
+    background-color: white; /* #fdfdfd; */
     -webkit-text-size-adjust: 100%;
 }
 
@@ -163,7 +163,7 @@ code {
     font-size: 15px;
     border: 1px solid #e8e8e8;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: #ffffff;
 }
 
 code {
@@ -171,8 +171,8 @@ code {
 }
 
 pre {
-    padding: 8px 12px;
-    overflow-x: scroll;
+  padding: 8px 12px;
+  overflow: auto; /* instead of `overflow-x: scroll` */
 }
 
 pre>code {
@@ -180,7 +180,6 @@ pre>code {
     padding-right: 0;
     padding-left: 0;
 }
-
 
 /**
  * Wrapper
@@ -308,11 +307,11 @@ pre>code {
 
 @media screen and (max-width: 600px) {
     .site-nav {
-        position: absolute;
+        /* position: absolute; */
         top: 9px;
         right: 30px;
         background-color: #fdfdfd;
-        border: 1px solid #e8e8e8;
+        /* border: 1px solid #e8e8e8; */
         border-radius: 5px;
         text-align: right;
     }
@@ -387,6 +386,11 @@ pre>code {
     font-size: 20px;
 }
 
+.post-list-heading {
+    color: black;
+    font-weight: 800;
+}
+
 .post-list {
     margin-left: 0;
     list-style: none;
@@ -401,24 +405,29 @@ pre>code {
     color: #828282;
 }
 
+.rss {
+  float: left;
+}
+
 .post-link {
-    display: block;
-    font-size: 22px;
+    display: grid;
+    font-size: 21px;
+    /* border: 1px solid; */
 }
 
 .post-description {
-    display: block;
+    display: grid;
     font-size: 14px;
+    /* border: 1px solid; */
 }
 
 .blog-roll-image {
+  float: left;
+  object-fit: cover;
   width: 180px;
   height: 100px;
-  object-fit: cover;
-  float: left;
-  padding: 0px 10px 0px 0px;
+  padding: 0px 20px 0px 0px;
 }
-
 
 /**
  * Posts

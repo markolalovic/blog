@@ -14,16 +14,12 @@ layout: default
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
-        {%- if post.image -%}
-          <img src="{{- post.image | relative_url -}}" alt="" class="blog-roll-image">
-        {%- endif -%}
+        <img src="{{- post.image | relative_url -}}" alt="" class="blog-roll-image">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <!-- <h2> -->
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        <!-- </h2> -->
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          {{ post.title | escape }}
+        </a>
         <span class="post-description">{{ post.subtitle | escape }}</span>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
@@ -31,12 +27,12 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
-
-
   {%- endif -%}
 
-  <p class="post-meta">
-    subscribe via <a class="btn btn-rss" href="/blog/feed.xml" target="_blank">RSS</a>
-  </p>
+  <div>
+    <p class="rss post-meta">
+      Subscribe via <a class="btn btn-rss" href="/blog/feed.xml" target="_blank">RSS</a>
+    </p>
+  </div>
 
 </div>
