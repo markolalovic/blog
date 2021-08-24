@@ -5,7 +5,7 @@
 
   <title>Marko's Blog</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <script src="{{ "/assets/css/main.css" | prepend: site.baseurl }}/assets/main.js"></script>
+  <script src="{{ "/assets/main.js" | prepend: site.baseurl }}"></script>
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 </head>
