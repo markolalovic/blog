@@ -15,11 +15,11 @@ rtime: 5 min read
   </div>
 </div>
 
-The ordinary least squares (OLS) method is not suitable to estimate the unknown parameters $\beta$ in the case of highly correlated regressors. As the correlation between regressors in $X$ increases the OLS method becomes unstable. In the limit $\|corr(x_{i}, x_{j})\| \rightarrow 1$, the OLS objective function is no longer strictly convex and there are infinitely many solutions of OLS problem. The matrix $X$ becomes singular and both the variance of the estimator and the distance of the estimator to the actual $\beta$ go to infinity. See my previous post TODO: link.
+The ordinary least squares (OLS) method is not suitable to estimate the unknown parameters $\beta$ in the case of highly correlated regressors. As the correlation between regressors in $X$ increases the OLS method becomes unstable. In the limit $\|corr(x_{i}, x_{j})\| \rightarrow 1$, the OLS objective function is no longer strictly convex and there are infinitely many solutions of OLS problem. The matrix $X$ becomes singular and both the variance of the estimator and the distance of the estimator to the actual $\beta$ go to infinity; see my previous post on [Multicollinearity Effect on OLS Regression](https://markolalovic.com/blog/2019/07/14/ols-regression.html).
 
-Here, after introducing penalized regression, we derive the ridge regression estimator. Ridge regression is an effective approach to solve such problems. We show that, regardless of data $X$, unique solution to ridge regression always exists. By adding the ridge (vector of $\alpha$'s) on the diagonal of $X$, this method produces stable estimates of the coefficients in $\beta$. See **Figure 1** for illustration.
+Here, after introducing penalized regression, we derive the ridge regression estimator. Ridge regression is an effective approach to solve such problems. We show that, regardless of data $X$, unique solution to ridge regression always exists. By adding the ridge (vector of $\alpha$'s) on the diagonal of $X$, the ridge regression method produces stable estimates of the coefficients in $\beta$. See **Figure 1** for illustration.
 
-We illustrate the method on a simple example in R, explain the role of the penalty function and finish with analysis of regularization parameter $\alpha$.
+We illustrate the method on a simple example in R, explain the role of the penalty function and finish with the analysis of regularization parameter $\alpha$.
 
 ## Penalized regression
 
