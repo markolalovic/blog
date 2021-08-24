@@ -1,0 +1,270 @@
+I"w%<div class="images">
+  <img src="/blog/assets/posts/lasso-dual/transformation-3d.svg" />
+  <div class="label">
+    <strong>Figure 1:</strong> Illustration when $n=p=3$. (Drawn using <a target="_blank" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi library</a>.)
+  </div>
+</div>
+
+<p>Let $A: \mathbb{R}^{p} \rightarrow \mathbb{R}^{n}$ and $y \in \mathbb{R}^{p}$. Consider the Tikhonov regularization</p>
+
+\[\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\begin{equation}
+\min_{x \in \mathbb{R}^{n}}
+\frac{1}{2} \norm{Ax - y}_{2}^{2} + \alpha \norm{x}_{1}.
+\label{eq:min-problem}
+\end{equation}\]
+
+<p>This type of penalized regression is called Lasso; see Tibshirani’s original paper [<a href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf" target="_blank">1</a>].</p>
+
+<p>In this post, we first derive the dual problem, then show that the solution $x^{*}$ can be determined with the help of a projection operator. Some nice and non-obvious properties of the solution $x^{*}$ follow from the geometry of the dual formulation. We finish with the observation that the Lasso solution is non-expansive as a function of $y$. This is not obvious and would probably be hard to show without the dual formulation.</p>
+
+<!-- Section 1 -->
+<h2 id="formulation-of-the-dual-problem">Formulation of the dual problem</h2>
+
+<p>To derive the dual problem, we can introduce a dummy variable $z \in \mathbb{R}^{n}$</p>
+
+\[\begin{equation}\nonumber
+z = Ax
+\end{equation}\]
+
+<p>and reformulate the minimization problem in \eqref{eq:min-problem} as a constrained problem</p>
+
+\[\begin{align*}
+\label{eq:primal-problem}
+\tag{P}
+&amp;\underset{z \in \mathbb{R}^{n}, x \in \mathbb{R}^{p}}{\text{minimize}} \quad
+\frac{1}{2} \norm{y - z}_{2}^{2} + \alpha \norm{x}_{1} \\
+&amp;\text{subject to} \quad z = Ax
+\end{align*}\]
+
+<p>Then we can construct the Lagrangian by introducing the dual variable $p \in \mathbb{R}^{n}$ (containing $n$ Lagrange multipliers)</p>
+
+\[\begin{equation}\nonumber
+L(x, z, p) = \frac{1}{2} \norm{y - z}_{2}^{2}
++ \alpha \norm{x}_{1} + p^{T} (z - Ax)
+\end{equation}\]
+
+<p>The dual objective function is</p>
+
+\[\begin{equation}\nonumber
+g(p) = \min_{z \in \mathbb{R}^{n}, x \in \mathbb{R}^{p}}
+\left\lbrace
+\frac{1}{2} \norm{y - z}_{2}^{2}
++ \alpha \norm{x}_{1} + p^{T} (z - Ax)
+\right\rbrace
+\end{equation}\]
+
+<p>We can split the terms depending on $z$ and $x$ and minimize each part separately</p>
+
+\[\begin{align}\nonumber
+g(p)
+&amp;= \min_{z \in \mathbb{R}^{n}, x \in \mathbb{R}^{p}}
+\left\lbrace
+\frac{1}{2} \norm{y}_{2}^{2}
+- y^{T}z
++ \frac{1}{2} \norm{z}_{2}^{2}
++ p^{T}z
++ \alpha \norm{x}_{1}
+- p^{T}Ax
+\right\rbrace \\[.3em]
+&amp;= \min_{z \in \mathbb{R}^{n}}\nonumber
+\left\lbrace
+\frac{1}{2} \norm{y}_{2}^{2}
+- (y - p)^{T}z
++ \frac{1}{2} \norm{z}_{2}^{2}
+\right\rbrace
++ \max_{x \in \mathbb{R}^{p}}
+\left\lbrace
+\alpha \norm{x}_{1}
+- (A^{T}p)^{T}x
+\right\rbrace
+\end{align}\]
+
+<p>We can use the stationarity condition, which says that at the optimal point, the subgradient of $L(x, z, p)$ with respect to $x$ and $z$ must contain 0.</p>
+
+<p>For the first part, since $L(x, z, p)$ is differentiable in $z$, the subgradient with respect to $z$  equals the gradient. By taking
+$\frac{\partial}{\partial z} L(x, z, p)$ and setting it to $0$, we get the stationarity condition</p>
+
+\[\begin{equation}\nonumber
+z = y - p^{*}
+\end{equation}\]
+
+<p>Plugging this into the first part, we get</p>
+
+\[\begin{align}\nonumber
+&amp;\frac{1}{2}\norm{y}_{2}^{2} - (y - p^{*})^{T}(y - p^{*})
++ \frac{1}{2}\norm{y - p^{*}}_{2}^{2} \\[.3em]
+&amp;=
+\frac{1}{2}\norm{y}_{2}^{2}\nonumber
+- \frac{1}{2}\norm{y - p^{*}}_{2}^{2}
+\end{align}\]
+
+<p>For the second part, because $\alpha \norm{x}_1$ is a non-differentiable function of $x$, we need to compute the subdifferential $\partial (\alpha \norm{x}_1)$.</p>
+
+<p>By using the rules for the subgradient of the maximum we can derive, see [<a href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf" target="_blank">2</a>], that the $\partial \norm{x}_{1}$ can be expressed as</p>
+
+\[\begin{equation}\nonumber
+\partial (\norm{x}_{1})
+= \lbrace g : \norm{g}_{\infty} \leq 1, g^{T} x = \norm{x}_{1}
+\rbrace
+\end{equation}\]
+
+<p>and using the rule for scalar multiplication</p>
+
+\[\begin{equation}\nonumber
+\partial (\alpha\norm{x}_{1})
+= \lbrace g : \norm{g}_{\infty} \leq \alpha, g^{T} x = \alpha\norm{x}_{1}
+\rbrace
+\end{equation}\]
+
+<p>Thus, we get the stationarity condition</p>
+
+\[\begin{equation}\nonumber
+g = A^{T}p \in \partial \alpha \norm{x}_{1}
+\end{equation}\]
+
+<p>when</p>
+
+\[\begin{align} \nonumber
+\norm{A^{T}p}_{\infty} \leq \alpha \\[.3em]
+\alpha \norm{x}_{1} - (A^{T}p)^{T}x = 0\nonumber
+\end{align}\]
+
+<p>Therefore, the dual problem is</p>
+
+\[\begin{align*}
+\label{eq:dual-problem}
+\tag{D}
+&amp;\max_{p \in \mathbb{R}^{n}}
+\frac{1}{2}\norm{y}_{2}^{2}
+- \frac{1}{2}\norm{y - p}_{2}^{2} \\[.3em]
+&amp;\text{subject to} \norm{A^{T}p}_{\infty} \leq \alpha
+\end{align*}\]
+
+<!-- Section 2 -->
+<h2 id="solution-of-the-dual-problem">Solution of the dual problem</h2>
+<p>The solution $p^{*}$ of the dual problem can be determined with the help of a projection operator.</p>
+
+<p>Looking at the dual problem formulation \eqref{eq:dual-problem}, we see that we can omit $\frac{1}{2}\norm{y}_{2}^{2}$, since this is constant. Then if we multiply it by 2 and flip the sign, we get an equivalent dual problem</p>
+
+\[\begin{align*}
+\label{eq:dual-problem-prime}
+\tag{D'}
+&amp;\min_{p \in \mathbb{R}^{n}}
+\norm{y - p}_{2}^{2} \\[.3em]
+&amp;\text{subject to} \norm{A^{T}p}_{\infty} \leq \alpha
+\end{align*}\]
+
+<p>A <em>projection operator</em> $P_{C}$ can be defined as</p>
+
+\[\DeclareMathOperator*{\argmin}{arg\,min}
+\begin{align}\nonumber
+P_{C} \text{: } &amp; \mathbb{R}^{n} \rightarrow C \\[.3em]
+&amp; y \mapsto P_{C}(y) := \argmin_{p \in C} \norm{y - p}_{2} \nonumber
+\end{align}\]
+
+<p>where $C \subset \mathbb{R}^{n}$ is closed and convex set. Looking at \eqref{eq:dual-problem-prime}, we see that $p^{*}$ is a projection</p>
+
+\[\begin{equation}\nonumber
+p^{*} = P_{C}(y)
+\end{equation}\]
+
+<p>where $C$ is equal to</p>
+
+\[\begin{equation}\nonumber
+C = \lbrace p \in \mathbb{R}^{n} :
+\norm{A^{T}p}_{\infty} \leq \alpha
+\rbrace
+\end{equation}\]
+
+<p>We notice that $C$ is indeed closed and convex. For example if $n=p=2$, and let</p>
+
+\[\begin{equation}\nonumber
+A^{T} = \begin{pmatrix}
+a_{11} &amp; a_{21}\\
+a_{12} &amp; a_{22}
+\end{pmatrix}
+\end{equation}\]
+
+<p>then</p>
+
+\[\begin{equation}\nonumber
+C = \lbrace -\alpha \leq a_{11} p_{1} + a_{12} p_{2} \leq \alpha \rbrace
+\cap
+\lbrace -\alpha \leq a_{21} p_{1} + a_{22} p_{2} \leq \alpha \rbrace
+\end{equation}\]
+
+<p>Or we can express $C$ as</p>
+
+\[\begin{equation}\nonumber
+C = (A^{T})^{-1}(D)
+\end{equation}\]
+
+<p>where $D$ is equal to</p>
+
+\[\begin{equation}\nonumber
+D = \lbrace d \in \mathbb{R}^{p} : \norm{d}_{\infty} \leq \alpha \rbrace
+\end{equation}\]
+
+<p>Again for $p=2$</p>
+
+\[\begin{equation}\nonumber
+D = \lbrace -\alpha \leq d_{1} \leq \alpha \rbrace
+\cap
+\lbrace -\alpha \leq d_{2} \leq \alpha \rbrace
+\end{equation}\]
+
+<div class="images">
+  <img src="/blog/assets/posts/lasso-dual/transformation-2d.svg" />
+  <div class="label">
+    <strong>Figure 2:</strong> Illustration when $n=p=2$.
+  </div>
+</div>
+
+<!-- Section 3 -->
+<h2 id="solution-of-the-primal-problem">Solution of the primal problem</h2>
+<p>From optimality condition of the dual problem, we can derive the primal solution under the assumption that $A^{-1}$ exists.</p>
+
+<p>During the formulation of the dual problem, we introduced the dummy variable $z = Ax$ and derived the stationary condition $z = y - p^{*}$.  From this, we get that every solution $x^{*}$ of \eqref{eq:primal-problem} should satisfy</p>
+
+\[\begin{equation}\nonumber
+A x^{*} = y - p^{*}
+\end{equation}\]
+
+<p>where $p^{*}$ is a solution of the dual problem \eqref{eq:dual-problem}. Therefore, if $A^{-1}$ exists, the primal solution is</p>
+
+\[\begin{equation}\nonumber
+x^{*} = A^{-1} \left( y - P_{C}(y) \right)
+\end{equation}\]
+
+<p>We notice that, since $P_{C}$ is a projection onto convex set $C$, it follows that $x^{*}$ is also non-expansive as a function of $y$; see <strong>Figure 3(a)</strong> in contrast to <strong>Figure 3(b)</strong> showing projection onto non-convex set $N$. This is not obvious and would probably be hard to show without the dual formulation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/blog/assets/posts/lasso-dual/convex.svg" alt="convex.svg" /></th>
+      <th style="text-align: center"><img src="/blog/assets/posts/lasso-dual/bean.svg" alt="bean.svg" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><span class="subfig">(a) Convex set $C$.</span></td>
+      <td style="text-align: center"><span class="subfig">(b) Non-convex set $N$.</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="images">
+  <div class="label">
+    <strong>Figure 3:</strong> Lasso solution $x^{*}$ is non-expansive as a function of $y$.
+  </div>
+</div>
+
+<h2 id="references">References</h2>
+<p>[1] Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. J. Royal. Statist. Soc B., Vol. 58, No. 1, pages 267-288).
+<a target="_blank" href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf">http://statweb.stanford.edu/~tibs/lasso/lasso.pdf</a></p>
+
+<p>[2] S. Boyd and L. Vandenberghe, “Subgradients Notes”, (2008), Stanford University
+<a target="_blank" href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf">https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf</a></p>
+
+:ET

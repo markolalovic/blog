@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Marko's Blog</title>
+  <meta name="description" content="        Figure 1: As the correlation between regressors increases the OLS method becomes unstable while the ridge regression method produces stable estimates...">
+  <link rel="stylesheet" href="/blog/assets/css/main.css">
+  <link rel="canonical" href="https://markolalovic.com/blog/ridge-regression">
+</head>
+
+
+<body>
+
+    <div class="page-wrapper">
+        <header class="site-header">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/docs/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/docs/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/docs/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/docs/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/docs/assets/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/docs/assets/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/docs/assets/img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <div class="wrapper">
+        <a class="site-title" href="/blog">Marko Lalovic</a>
+        <a class="site-nav" href="https://markolalovic.com">About</a>
+        <a class="site-nav" href="/blog">Blog</a>
+    </div>
+
+</header>
+
+
+        <div class="page-content">
+            <div class="wrapper">
+                <div class="post">
+
+    <header class="post-header">
+        <h1 class="post-title">Ridge Regression</h1>
+        <h2 class="post-subtitle">Derivation of ridge regression estimator and it's properties, the role of the penalty function and the analysis of regularization parameter.</h2>
+        <p class="post-meta">Aug 1, 2019 • Marko Lalovic • 5 min read</p>
+    </header>
+
+    <article class="post-content">
+        <div class="images">
+  <img src="/blog/assets/posts/ridge-regression/problem.svg" />
+  <div class="label">
+    <strong>Figure 1:</strong> As the correlation between regressors increases the OLS method becomes unstable while the ridge regression method produces stable estimates regardless of the given data in $X$.
+  </div>
+</div>
+
+<p>The ordinary least squares (OLS) method is not suitable to estimate the unknown parameters $\beta$ in the case of highly correlated regressors. As the correlation between regressors in $X$ increases the OLS method becomes unstable. In the limit $|corr(x_{i}, x_{j})| \rightarrow 1$, the OLS objective function is no longer strictly convex and there are infinitely many solutions of OLS problem. The matrix $X$ becomes singular and both the variance of the estimator and the distance of the estimator to the actual $\beta$ go to infinity; see my previous post on <a href="https://markolalovic.com/blog/2019/07/14/ols-regression.html">Multicollinearity Effect on OLS Regression</a>.</p>
+
+<p>Here, after introducing penalized regression, we derive the ridge regression estimator. Ridge regression is an effective approach to solve such problems. We show that, regardless of data $X$, unique solution to ridge regression always exists. By adding the ridge (vector of $\alpha$’s) on the diagonal of $X$, the ridge regression method produces stable estimates of the coefficients in $\beta$. See <strong>Figure 1</strong> for illustration.</p>
+
+<p>We illustrate the method on a simple example in R, explain the role of the penalty function and finish with the analysis of regularization parameter $\alpha$.</p>
+
+<h2 id="penalized-regression">Penalized regression</h2>
+
+<p>In <em>penalized regression</em>, for $n &gt; p$ and given $X: \mathbb{R}^{p} \rightarrow \mathbb{R}^{n}$ and $y \in \mathbb{R}^{n}$, we minimize the functional</p>
+
+\[\begin{equation}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+J_{\alpha}(\beta) = \norm{ y - X\beta }_{2}^{2} + \alpha P(\beta)
+\end{equation}\]
+
+<p>over $\beta \in \mathbb{R}^{p}$, where</p>
+
+<ul>
+  <li>$J_{\alpha}: \mathbb{R}^{p} \rightarrow \mathbb{R}$ is the objective function;</li>
+  <li>$P: \mathbb{R}^{p} \rightarrow \mathbb{R}$ is a <em>penalty function</em> that penalizes unrealistic values in $\beta$;</li>
+  <li>Parameter $\alpha &gt; 0$ controls the trade-off between the penalty and the fit of the loss function.</li>
+</ul>
+
+<p>The main idea that determines the choice of the penalty function is that we would prefer a simple model to a more complex one.</p>
+
+<p>There are many different possibilities for penalty function $P$. For example, if we want a smoother fit, then $P$ is a measure of the curvature.</p>
+
+<p>In the case of correlated regressors, the estimated coefficients can become too large and $P$ is a measure of the distance of the coefficients from the origin. In this case, the main penalty function to consider is</p>
+
+\[\begin{equation}
+P(\beta) = \norm{\beta}_{2}^{2}
+\end{equation}\]
+
+<p>This type of penalized regression is called <em>Ridge regression</em>; see original paper [<a href="https://www.nrs.fs.fed.us/pubs/rn/rn_ne236.pdf" target="_blank">1</a>].</p>
+
+<h2 id="derivation-of-ridge-regression-estimator">Derivation of ridge regression estimator</h2>
+
+<p>Here, in order to simplify the derivation, we will assume that $X: \mathbb{R}^{p} \rightarrow \mathbb{R}^{n}$ is linear and continuous with full column rank $p$.</p>
+
+<p>The objective function we want to minimize, written in a matrix form, is</p>
+
+\[\begin{align}
+\norm{ y - X \beta }_{2}^{2} + \alpha \norm{\beta}_{2}^2
+&amp;= (y - X \beta)^{T} (y - X \beta) + \alpha \beta^{T} \beta \nonumber \\[1em]
+&amp;= y^{T}y - 2 y^{T} X \beta + \beta^{T} X^{T}X \beta + \alpha \beta^{T} \beta
+\end{align}\]
+
+<p>By taking a partial derivative with respect to $\beta$ and setting it to zero
+\begin{equation}
+-2 X^{T} y + 2 X^{T} X \hat{\beta} + 2 \alpha \hat{\beta} = 0
+\end{equation}</p>
+
+<p>we get a regularized normal equation
+\begin{equation}
+(X^{T}X + \alpha I) \hat{\beta} = X^{T}y
+\end{equation}</p>
+
+<p>we can express $\hat{\beta}$ as
+\begin{equation}
+\hat{\beta} = (X^{T}X + \alpha I)^{-1} X^{T} y
+\end{equation}</p>
+
+<p>and since $\text{rank}(X) = p$
+\begin{equation}
+X z \neq 0 \quad \text{for each} \quad z \neq 0
+\end{equation}</p>
+
+<p>for the Hessian
+\begin{equation}
+2X^{T}X + 2 \alpha
+\end{equation}</p>
+
+<p>it holds that</p>
+
+\[\begin{align}
+2 z^{T} X^{T} X z + 2 \alpha z^{T} z
+&amp;= 2 (Xz)^{T} (Xz) + 2 \alpha z^{T} z \nonumber \\[1em]
+&amp;= 2 \norm{Xz}_{2}^{2} + 2 \alpha \norm{z}_{2}^{2} &gt; 0
+\quad \text{for each} \quad z \neq 0
+\label{eq: positive-definite}
+\end{align}\]
+
+<p>therefore, the expressed $\hat{\beta}$ is really an estimator</p>
+
+<p>\begin{equation}
+\hat{\beta}_{\text{RR}} = (X^{T}X + \alpha I)^{-1} X^{T} y.
+\label{eq: rr}
+\end{equation}</p>
+
+<h3 id="example">Example</h3>
+
+<p>We can illustrate the ridge regression method to estimate the unknown parameters $\beta$ in the case of correlated regressors on a simple example in R.</p>
+
+<p>Suppose we have a model $y \sim \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2}$, more specifically, let</p>
+
+<p>\begin{equation}
+\beta_{0} = 3, \quad \beta_{1} = \beta_{2} = 1.
+\end{equation}</p>
+
+<p>and let the sample contain 100 elements</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We then introduce some highly correlated regressors</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span><span class="w">
+</span><span class="n">x1</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">
+</span><span class="n">x2</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>with correlation coefficient almost 1</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cor</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">0.999962365268769</span><span class="w">
+</span></code></pre></div></div>
+
+<p>into the model</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>and calculate the estimate $\hat{\beta}_{\text{RR}}$ for $\alpha = 0.3$</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alpha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.3</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+
+</span><span class="n">beta.ridge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">xx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">diag</span><span class="p">(</span><span class="m">3</span><span class="p">))</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">as.vector</span><span class="p">(</span><span class="n">xx</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">beta.ridge</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">2.98537494896842</span><span class="w"> </span><span class="m">0.815120466450887</span><span class="w"> </span><span class="m">1.04146900239714</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="properties-of-ridge-regression-estimator">Properties of ridge regression estimator</h3>
+
+<ul>
+  <li>
+    <p>The unique solution \ref{eq: rr} of ridge regression $\hat{\beta}_{\text{RR}}$ always exists, since $X^{T}X + \alpha I$ is always rank $p$.</p>
+  </li>
+  <li>
+    <p>We can derive a relationship between ridge and OLS estimators for the case when the matrix $X$ is orthogonal. Using $X^{T}X = I$ twice and since $\hat{\beta}_{\text{OLS}} = (X^{T}X)^{-1} X^{T} y$, we get the relation</p>
+  </li>
+</ul>
+
+\[\begin{align}
+\hat{\beta}_{\text{RR}} &amp;= (X^{T}X + \alpha I)^{-1} X^{T} y \nonumber \\[1em]
+&amp;= (I + \alpha I)^{-1} X^{T} y \nonumber \\[1em]
+&amp;= (1 + \alpha)^{-1} I X^{T} y \nonumber \\[1em]
+&amp;= (1 + \alpha)^{-1} (X^{T}X)^{-1} X^{T} y \nonumber \\[1em]
+&amp;= (1 + \alpha)^{-1} \hat{\beta}_{\text{OLS}}
+\end{align}\]
+
+<ul>
+  <li>Ridge regression estimator $\hat{\beta}_{\text{RR}}$ is biased since, for each value of $\alpha &gt; 0$, its expected value is not equal to $\beta$</li>
+</ul>
+
+\[\begin{align}
+\mathbb{E}[\hat{\beta}_{ridge}]
+&amp;= \mathbb{E}[(X^{T}X + \alpha I)^{-1} X^{T} y] \nonumber \\[1em]
+&amp;= \mathbb{E}[(X^{T}X + \alpha I)^{-1} (X^{T}X) (X^{T}X)^{-1} X^{T} y] \nonumber \\[1em]
+&amp;= \mathbb{E}[(X^{T}X + \alpha I)^{-1} (X^{T}X) \hat{\beta}_{\text{OLS}}] \nonumber \\[1em]
+&amp;= (X^{T}X + \alpha I)^{-1} (X^{T}X) \mathbb{E}[\hat{\beta}_{\text{OLS}}] \nonumber \\[1em]
+&amp;= (X^{T}X + \alpha I)^{-1} (X^{T}X) \beta.
+\end{align}\]
+
+<ul>
+  <li>Also, as $\alpha \rightarrow 0$, ridge estimator tends to OLS estimator, which can easiliy be seen from</li>
+</ul>
+
+\[\begin{align}
+\lim_{\alpha \to 0} \hat{\beta}_{\text{RR}}
+&amp;= \lim_{\alpha \to 0} (X^{T}X + \alpha I)^{-1} (X^{T}X) \hat{\beta}_{\text{OLS}} \nonumber \\[1em]
+&amp;= (X^{T}X)^{-1} (X^{T}X) \hat{\beta}_{\text{OLS}} \nonumber \\[1em]
+&amp;= \hat{\beta}_{\text{OLS}}
+\end{align}\]
+
+<h2 id="the-role-of-the-penalty-function">The role of the penalty function</h2>
+<p>The role of the penalty function can be shown conveniently with the help of singular value decomposition. Let</p>
+
+<p>\begin{equation}
+X = U \Sigma V^{T}
+\end{equation}</p>
+
+<p>be the singular value decomposition of $X$ where $\Sigma$ contains all the singular values</p>
+
+<p>\begin{equation}
+\sigma_{1} \geq \sigma_{2} \geq \dots \geq \sigma_{p} &gt; 0
+\end{equation}</p>
+
+<p>The regularized normal equation
+\(\begin{align}
+( X^{T} X + \alpha I ) \hat{\beta} = X^{T} y
+\end{align}\)</p>
+
+<p>can be rewritten as</p>
+
+\[\begin{align}
+(V \Sigma^{T} U^{T}U \Sigma V^{T} + \alpha I) \hat{\beta}
+= V \Sigma^{T} U^{T} y
+\end{align}\]
+
+<p>Then, since $U^{T}U = I$ and $V^{T}V = I$, we get</p>
+
+\[\begin{align}
+(V \Sigma^{T} \Sigma V^{T} + \alpha V^{T}V) \hat{\beta}
+&amp;= V \Sigma^{T} U^{T} y \nonumber \\[1em]
+V (\Sigma^{T} \Sigma + \alpha I) V^{T} \hat{\beta}
+&amp;= V \Sigma^{T} U^{T} y
+\end{align}\]
+
+<p>Furthermore, multiplying it by $V^{T}$ from the left and setting $z := V^{T} \hat{\beta}$, we get
+\begin{equation}
+(\Sigma^{T} \Sigma + \alpha I) z = \Sigma^{T} U^{T} y
+\end{equation}</p>
+
+<p>Therefore</p>
+
+<p>\begin{equation}
+z_{i} = \frac{\sigma_{i} (u_{i}^{T} y)}{\sigma_{i}^{2} + \alpha} \quad \text{for} \quad i = 1, \dots, p
+\end{equation}</p>
+
+<p>And, for minimum norm solution, let
+\begin{equation}
+z_{i} = 0 \quad \text{for} \quad i = p + 1, \dots, n
+\end{equation}</p>
+
+<p>Finally, from $\hat{\beta} = V z$ and since $V$ is orthogonal</p>
+
+\[\begin{equation}
+\norm{\hat{\beta}} = \norm{VV^{T} \hat{\beta}}
+= \norm{V^{T}\hat{\beta}}
+= \norm{z}
+\end{equation}\]
+
+<p>we get</p>
+
+\[\begin{equation}
+\hat{\beta}_{i}
+= \frac{\sigma_{i} (u_{i}^{T} y)}{\sigma_{i}^{2} + \alpha} v_{i}
+\label{eq: beta_i}
+\end{equation}\]
+
+<p>And from</p>
+
+\[\begin{equation}
+\hat{\beta}_{i}
+\approx
+\begin{cases}
+  0, &amp; \text{if } \sigma_{i} &lt;&lt; \alpha \\
+  \frac{u_{i}^{T} y}{\sigma_{i}}v_{i}, &amp; \text{if } \sigma_{i} &gt;&gt; \alpha
+\end{cases}
+\end{equation}\]
+
+<p>we can see that the penalty function $\alpha \norm{\beta}_{2}^{2}$ acts as a filter since the contributions</p>
+
+<ul>
+  <li>from $\sigma_{i}$ that is small relative to the regularization parameter $\alpha$ are almost eliminated;</li>
+  <li>from $\sigma_{i}$ that is large relative to the regularization parameter $\alpha$ are left almost unchanged.</li>
+</ul>
+
+<p>By defining a filter</p>
+
+\[\begin{equation}
+F_{\alpha}(\xi) = \frac{1}{\xi + \alpha}
+\end{equation}\]
+
+<p>the solution of ridge regression can be further expressed as</p>
+
+\[\begin{equation}
+\hat{\beta}_{\text{RR}} = F_{\alpha}(X^{T}X) X^{T}y
+\end{equation}\]
+
+<h2 id="regularization-parameter-alpha">Regularization parameter $\alpha$</h2>
+
+<p>First, we notice that the solution of ridge regression is monotonically decreasing in $\alpha$.</p>
+
+<p>To show this, let</p>
+
+\[\begin{equation}
+\psi(\alpha) = \norm{\hat{\beta}_{\text{RR}}}_{2}^{2}
+\end{equation}\]
+
+<p>Then, from derived equation for $\hat{\beta}_{i}$ in \ref{eq: beta_i}, we have that</p>
+
+\[\begin{equation}
+\psi(\alpha) =
+\sum_{i = 1}^{p} \frac{\sigma_{i}^{2} (u_{i}^{T} y)^{2}}{ (\sigma_{i}^{2} + \alpha)^{2} } v_{i}^{2}
+\end{equation}\]
+
+<p>and taking derivative on $\alpha$</p>
+
+\[\begin{equation}
+\psi'(\alpha) =
+-2 \sum_{i = 1}^{p} \frac{\sigma_{i}^{2} (u_{i}^{T} y)^{2}}{ (\sigma_{i}^{2} + \alpha)^{3} } v_{i}^{2} &lt; 0
+\end{equation}\]
+
+<p>Second, as $\alpha \rightarrow \infty$ the solution of ridge regression goes to $\boldsymbol{0}$, since</p>
+
+\[\begin{equation}
+\lim_{\alpha \rightarrow \infty} \psi(\alpha) =
+\lim_{\alpha \rightarrow \infty} \sum_{i = 1}^{p} \frac{\sigma_{i}^{2} (u_{i}^{T} y)^{2}}{ (\sigma_{i}^{2} + \alpha)^{2} } v_{i}^{2} = 0
+\end{equation}\]
+
+<p>In the limit $\alpha \rightarrow 0$, as shown before, the solution of ridge regression goes to ordinary least squares solution. Furthermore, if $\sigma_{p} \rightarrow 0$ where $X$ is no longer full column rank, then $\psi(\alpha) \rightarrow \infty$.</p>
+
+<p>We can plot how the estimates $\beta_{0}, \beta_{1}, \beta_{2}$ change depending on the value of parameter $\alpha$ for the data of the <a href="#example">Example</a>; shown in <strong>Figure 2</strong> below</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alphas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">))</span><span class="w">
+</span><span class="n">betas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sapply</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">beta.ridge</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">
+</span><span class="p">})</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">latex2exp</span><span class="p">)</span><span class="w"> </span><span class="c1"># for annotation</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span><span class="w"> </span><span class="n">betas</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w">
+     </span><span class="n">type</span><span class="o">=</span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+     </span><span class="n">xlab</span><span class="o">=</span><span class="n">TeX</span><span class="p">(</span><span class="n">r</span><span class="s1">'($\log(\alpha)$)'</span><span class="p">),</span><span class="w">
+     </span><span class="n">ylab</span><span class="o">=</span><span class="n">TeX</span><span class="p">(</span><span class="n">r</span><span class="s1">'($\hat{\beta}$)'</span><span class="p">),</span><span class="w">
+     </span><span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cex.main</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cex.sub</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span><span class="w"> </span><span class="n">betas</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="n">type</span><span class="o">=</span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span><span class="w"> </span><span class="n">betas</span><span class="p">[</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="n">type</span><span class="o">=</span><span class="s2">"l"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="m">7.73</span><span class="p">,</span><span class="w"> </span><span class="m">3.12</span><span class="p">,</span><span class="w">
+       </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="w">
+           </span><span class="n">TeX</span><span class="p">(</span><span class="n">r</span><span class="s1">'($\hat{\beta}_{1}(\alpha)$)'</span><span class="p">),</span><span class="w">
+           </span><span class="n">TeX</span><span class="p">(</span><span class="n">r</span><span class="s1">'($\hat{\beta}_{2}(\alpha)$)'</span><span class="p">),</span><span class="w">
+           </span><span class="n">TeX</span><span class="p">(</span><span class="n">r</span><span class="s1">'($\hat{\beta}_{3}(\alpha)$)'</span><span class="p">)),</span><span class="w">
+       </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"black"</span><span class="p">),</span><span class="w">
+       </span><span class="n">lwd</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="images">
+  <img src="/blog/assets/posts/ridge-regression/ridge-solution-path.svg" />
+  <div class="label">
+    <strong>Figure 2:</strong> The solution of ridge regression as a function of the regularization parameter $\alpha$.
+  </div>
+</div>
+
+<p>The selection of $\alpha$ is usually done by cross-validation. This means that we randomly partition the data into $K$ equally sized sets. For some value of $\alpha$ we then build a model (calculate estimates for the coefficients) on the data from $K - 1$ sets (learning set) and test it on the rest of the data (test set). Of course, we are interested in the mean square error (MSE). We then repeat the process for the remaining values of $\alpha$ and select the value of $\alpha$ where this average is the smallest. Typical values for $K$ are $5, 10$, and $n$ (sample size).</p>
+
+<p>Let’s find the optimal value of parameter $\alpha$ for the data of the <a href="#example">Example</a> using 10-fold cross-validation</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">K</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="n">folds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cut</span><span class="p">(</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="w"> </span><span class="n">breaks</span><span class="o">=</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">cv.matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">alphas</span><span class="p">))</span><span class="w">
+
+</span><span class="n">mse</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sum</span><span class="p">((</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">K</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">test.i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">which</span><span class="p">(</span><span class="n">folds</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">alphas</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">br</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">beta.ridge</span><span class="p">(</span><span class="n">alphas</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="n">test.i</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">test.i</span><span class="p">])</span><span class="w">
+        </span><span class="n">cv.matrix</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mse</span><span class="p">(</span><span class="n">br</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">test.i</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">test.i</span><span class="p">])</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">avgs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">cv.matrix</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span><span class="n">best.alpha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alphas</span><span class="p">[</span><span class="n">avgs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">avgs</span><span class="p">)]</span><span class="w">
+</span><span class="n">best.alpha</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">0.246596963941606</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p>[1] Hilt, Donald E.; Seegrist, Donald W. 1977. Ridge: a computer program for calculating ridge regression estimates. Research Note NE-236. Upper Darby, PA: U.S. Department of Agriculture, Forest Service, Northeastern Forest Experiment Station. 7p.
+<a target="_blank" href="https://www.nrs.fs.fed.us/pubs/rn/rn_ne236.pdf">https://www.nrs.fs.fed.us/pubs/rn/rn_ne236.pdf</a></p>
+
+    </article>
+
+    <div>
+      <section class="comments" id="comment-section">
+  <hr>
+  
+
+  <!-- New comment form -->
+  <div id="respond" class="comment__new">
+    <form class="js-form form" method="post" action="https://markos-staticman.herokuapp.com/v2/entry/markolalovic/blog/main/comments">
+  <input type="hidden" name="options[origin]" value="https://markolalovic.com/blog/ridge-regression">
+  <input type="hidden" name="options[parent]" value="https://markolalovic.com/blog/ridge-regression">
+  <input type="hidden" id="comment-replying-to-uid" name="fields[replying_to_uid]" value="">
+  <input type="hidden" name="options[slug]" value="ridge-regression">
+  
+
+  <div class="textfield">
+    <label for="comment-form-message"><h2>Add Comment<small><a rel="nofollow" id="cancel-comment-reply-link" href="https://markolalovic.com/blog/ridge-regression#respond" style="display:none;">(cancel reply)</a></small></h2>
+      <textarea class="textfield__input" name="fields[message]" type="text" id="comment-form-message" placeholder="Your comment (markdown accepted)" required rows="6"></textarea>
+    </label>
+  </div>
+
+    <div class="textfield narrowfield">
+      <label for="comment-form-name">Name
+        <input class="textfield__input" name="fields[name]" type="text" id="comment-form-name" placeholder="Your name (required)" required/>
+      </label>
+    </div>
+
+    <div class="textfield narrowfield">
+      <label for="comment-form-email">E-mail
+        <input class="textfield__input" name="fields[email]" type="email" id="comment-form-email" placeholder="Your email (optional)"/>
+      </label>
+    </div>
+
+    <div class="textfield narrowfield hp">
+      <label for="hp">
+        <input class="textfield__input" name="fields[hp]" id="hp" type="text" placeholder="Leave blank">
+      </label>
+    </div>
+
+    
+
+    <button class="button" id="comment-form-submit">
+      Submit
+    </button>
+
+</form>
+
+<article class="modal mdl-card mdl-shadow--2dp">
+  <div>
+    <h3 class="modal-title js-modal-title"></h3>
+  </div>
+  <div class="mdl-card__supporting-text js-modal-text"></div>
+  <div class="mdl-card__actions mdl-card--border">
+    <button class="button mdl-button--colored mdl-js-button mdl-js-ripple-effect js-close-modal">Close</button>
+  </div>
+</article>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none" >
+  <symbol id="icon-loading" viewBox="149.8 37.8 499.818 525"><path d="M557.8 187.8c13.8 0 24.601-10.8 24.601-24.6S571.6 138.6 557.8 138.6s-24.6 10.8-24.6 24.6c0 13.2 10.8 24.6 24.6 24.6zm61.2 90.6c-16.8 0-30.6 13.8-30.6 30.6s13.8 30.6 30.6 30.6 30.6-13.8 30.6-30.6c.6-16.8-13.2-30.6-30.6-30.6zm-61.2 145.2c-20.399 0-36.6 16.2-36.6 36.601 0 20.399 16.2 36.6 36.6 36.6 20.4 0 36.601-16.2 36.601-36.6C595 439.8 578.2 423.6 557.8 423.6zM409 476.4c-24 0-43.2 19.199-43.2 43.199s19.2 43.2 43.2 43.2 43.2-19.2 43.2-43.2S433 476.4 409 476.4zM260.8 411c-27 0-49.2 22.2-49.2 49.2s22.2 49.2 49.2 49.2 49.2-22.2 49.2-49.2-22.2-49.2-49.2-49.2zm-10.2-102c0-27.6-22.8-50.4-50.4-50.4-27.6 0-50.4 22.8-50.4 50.4 0 27.6 22.8 50.4 50.4 50.4 27.6 0 50.4-22.2 50.4-50.4zm10.2-199.8c-30 0-54 24-54 54s24 54 54 54 54-24 54-54-24.6-54-54-54zM409 37.8c-35.4 0-63.6 28.8-63.6 63.6S374.2 165 409 165s63.6-28.8 63.6-63.6-28.2-63.6-63.6-63.6z"/>
+  </symbol>
+</svg>
+
+
+
+  </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/blog/assets/main.js"></script>
+
+
+    </div>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <ul class="social-media-list">
+      
+      <li>
+        <a href="https://github.com/markolalovic" target="_blank">
+          <span class="icon  icon--github">
+            <svg viewBox="0 0 16 16">
+              <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+            </svg>
+          </span>
+
+          <span class="username">markolalovic</span>
+        </a>
+      </li>
+      
+
+      
+      <li>
+        <a href="https://twitter.com/MarkoLalovic" target="_blank">
+          <span class="icon  icon--twitter">
+            <svg viewBox="0 0 16 16">
+              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+            </svg>
+          </span>
+
+          <span class="username">MarkoLalovic</span>
+        </a>
+        <span class="post-meta" style="float: right">
+          The website content is licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>.
+        </span>
+      </li>
+      
+    </ul>
+  </div>
+
+</footer>
+
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: { autoNumber: "AMS" },
+          tagSide: "right"
+        },
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+</body>
+
+</html>

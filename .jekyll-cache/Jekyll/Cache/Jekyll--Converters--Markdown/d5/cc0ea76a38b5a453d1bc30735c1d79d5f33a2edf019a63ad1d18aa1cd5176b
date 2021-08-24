@@ -1,0 +1,208 @@
+I"NJ<div class="images">
+  <img src="/blog/assets/posts/ols-regression/problem.svg" />
+  <div class="label">
+    <strong>Figure 1:</strong> As the correlation between regressors increases, the OLS method becomes unstable. In the limit $|corr(x_{i}, x_{j})| \rightarrow 1$, the OLS objective function is no longer strictly convex and OLS solution is no longer unique.
+  </div>
+</div>
+
+<p>In <em>ordinary least squares (OLS) regression</em>, for given $X: \mathbb{R}^{p} \rightarrow \mathbb{R}^{n}$ and $y \in \mathbb{R}^{n}$, we minimize over $\beta \in \mathbb{R}^{p}$, the sum of squared residuals</p>
+
+\[\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\begin{equation}
+S(\beta) = \norm{ y - X\beta }_{2}^{2}
+\end{equation}\]
+
+<p>We first illustrate the problem with using ordinary least squares (OLS) method to estimate the unknown parameters $\beta$ in the case of highly correlated regressors on a simple example in R.</p>
+
+<p>Suppose we have a model $y \sim \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2}$, more specifically, let</p>
+
+<p>\begin{equation}
+\beta_{0} = 3, \quad \beta_{1} = \beta_{2} = 1.
+\end{equation}</p>
+
+<p>and let the sample contain 100 elements</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We then introduce some highly correlated regressors</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span><span class="w">
+</span><span class="n">x1</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">
+</span><span class="n">x2</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>with correlation coefficient almost 1</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cor</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">0.999962365268769</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Let’s run the OLS method 1000 times to get a sense of the effect of highly correlated regressors</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">intr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">))</span><span class="w">
+</span><span class="n">nsim</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="n">betas</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">nsim</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">y</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+    </span><span class="n">xx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+    </span><span class="n">beta.ols</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.vector</span><span class="p">(</span><span class="n">xx</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="n">beta.ols</span><span class="p">)</span><span class="w">
+</span><span class="p">})</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The estimator for $\beta$, obtained by the OLS method, is still unbiased</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">betas</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">2.996</span><span class="w"> </span><span class="m">1.006</span><span class="w"> </span><span class="m">0.993</span><span class="w">
+</span></code></pre></div></div>
+
+<p>But the variance becomes to large</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">betas</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="m">0.101</span><span class="w"> </span><span class="m">11.110</span><span class="w"> </span><span class="m">11.103</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The estimated coefficients can become too large, some can even have the wrong sign</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">round</span><span class="p">(</span><span class="n">betas</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="m">3.002</span><span class="w"> </span><span class="m">-7.673</span><span class="w">  </span><span class="m">9.529</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The problem can be seen by drawing a contour plot of the objective function $S(\beta)$</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ssr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">((</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">xlen</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span><span class="n">ylen</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span><span class="n">xgrid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">-10.1</span><span class="p">,</span><span class="w"> </span><span class="m">10.1</span><span class="p">,</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlen</span><span class="p">)</span><span class="w">
+</span><span class="n">ygrid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">-10.1</span><span class="p">,</span><span class="w"> </span><span class="m">10.1</span><span class="p">,</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylen</span><span class="p">)</span><span class="w">
+</span><span class="n">zvals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlen</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ylen</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">xlen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">ylen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">zvals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ssr</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">xgrid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">ygrid</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xgrid</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ygrid</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zvals</span><span class="p">,</span><span class="w">
+        </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1e3</span><span class="p">,</span><span class="w"> </span><span class="m">3e3</span><span class="p">,</span><span class="w"> </span><span class="m">6e3</span><span class="p">,</span><span class="w"> </span><span class="m">1e4</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>As shown in <strong>Figure 1</strong>, as the correlation between regressors increases, matrix $X$ becomes nearly singular and OLS method becomes unstable.</p>
+
+<p>In the limit</p>
+
+<p>\begin{equation}
+|corr(x_{i}, x_{j})| \rightarrow 1
+\end{equation}</p>
+
+<p>the dimension of the column space decreases</p>
+
+<p>\begin{equation}
+\text{rank}(X) &lt; p
+\end{equation}</p>
+
+<p>the objective function $S(\beta)$ is no longer strictly convex, and there are infinitely many solutions of OLS.</p>
+
+<p>Thinking about this in a different, more intuitive way, we would like to estimate the coefficient $\beta_{1}$ as the influence of $x_{1}$ on $y$ without the influence of $x_{2}$. Since the regressors $x_{1}$ and $x_{2}$ are highly correlated, they vary together and the coefficient $\beta_{1}$ is difficult to estimate.</p>
+
+<p>The OLS method does not solve these problems, as it only minimizes the sum of squared residuals, i.e. the objective function $S(\beta)$.</p>
+
+<h3 id="why-does-this-happen">Why does this happen?</h3>
+
+<p>In general, we have a linear model</p>
+
+<p>\begin{equation}
+\label{eq: model}
+y = X \beta + \epsilon
+\end{equation}</p>
+
+<p>and let for errors $\epsilon$ hold the assumption (Gauss–Markov)</p>
+
+<p>\begin{equation}
+\mathbb{E}[\epsilon \epsilon^{T}] = \sigma^{2} I
+\end{equation}</p>
+
+<p>the estimator according to the OLS method is</p>
+
+<p>\begin{equation}
+\label{eq: betahat}
+\hat{\beta} = (X^{T}X)^{-1} X^{T} y.
+\end{equation}</p>
+
+<p>From \ref{eq: model} and \ref{eq: betahat} we get</p>
+
+<p>\begin{equation}
+\hat{\beta} - \beta = (X^{T}X)^{-1} X^{T} \epsilon
+\end{equation}</p>
+
+<p>therefore, the covariance matrix for $\hat{\beta}$ is</p>
+
+\[\begin{align}
+\mathbb{E}[(\hat{\beta} - \beta) (\hat{\beta} - \beta)^{T}] \nonumber
+&amp;= \mathbb{E}[\left((X^{T}X)^{-1} X^{T} \epsilon\right) \left((X^{T}X)^{-1} X^{T} \epsilon\right)^{T}] \nonumber \\[1em]
+&amp;= \mathbb{E}[(X^{T}X)^{-1} X^{T} \epsilon \epsilon^{T} X (X^{T}X)^{-1}] \nonumber \\[1em]
+&amp;= (X^{T}X)^{-1} X^{T} \mathbb{E}[\epsilon \epsilon^{T}] X (X^{T}X)^{-1} \nonumber \\[1em]
+&amp;= \sigma^{2} (X^{T}X)^{-1}
+\label{eq: variance}
+\end{align}\]
+
+<p>where we took into account that the matrix $(X^{T}X)$ is symmetric and assumed that it is not stochastic and is independent of $\epsilon$. The variance for the coefficient $\hat{\beta}_{k}$ is the $(k, k)$-th element of the covariance matrix.</p>
+
+<p>The average distance between the estimator $\hat{\beta}$ and the actual $\beta$ is</p>
+
+\[\begin{align}
+\mathbb{E}[(\hat{\beta} - \beta)^{T} (\hat{\beta} - \beta)] \nonumber
+&amp;= \mathbb{E}[((X^{T}X)^{-1} X^{T} \epsilon)^{T} ((X^{T}X)^{-1} X^{T} \epsilon)] \nonumber \\[1em]
+&amp;= \mathbb{E}[\epsilon^{T} X (X^{T}X)^{-1} (X^{T}X)^{-1} X^{T} \epsilon] \nonumber \\[1em]
+&amp;= \mathbb{E}[\text{tr}(\epsilon^{T} X (X^{T}X)^{-1} (X^{T}X)^{-1} X^{T} \epsilon)] \nonumber \\[1em]
+&amp;= \mathbb{E}[\text{tr}(\epsilon \epsilon^{T} X (X^{T}X)^{-1} (X^{T}X)^{-1} X^{T} )] \nonumber \\[1em]
+&amp;= \sigma^{2} \text{tr}( X (X^{T}X)^{-1} (X^{T}X)^{-1} X^{T} )] \nonumber \\[1em]
+&amp;= \sigma^{2} \text{tr}( X^{T} X (X^{T}X)^{-1} (X^{T}X)^{-1})] \nonumber \\[1em]
+&amp;= \sigma^{2} \text{tr}((X^{T}X)^{-1})
+\label{eq: distance}
+\end{align}\]
+
+<p>where we took into account that the distance is a scalar, so its expected value will be equal to its trace. We then used the fact that the trace is invariant with respect to cyclic permutations</p>
+
+\[\text{tr}(ABCD) = \text{tr}(DABC)\]
+
+<p>From \ref{eq: variance} and \ref{eq: distance}, we see that both the variance of the estimator and the distance of the estimator from the actual $\beta$ depend on the matrix $(X^{T}X)^{-1}$.</p>
+
+<p>The reason why the variance of the estimator and the distance of the estimator from the actual $\beta$ become large, can be shown conveniently with the help of singular value decomposition. Let</p>
+
+<p>\begin{equation}
+X = U \Sigma V^{T}
+\end{equation}</p>
+
+<p>be the singular value decomposition of $X$ where $\Sigma$ contains all the singular values</p>
+
+<p>\begin{equation}
+\sigma_{1} \geq \sigma_{2} \geq \dots \geq \sigma_{p} &gt; 0
+\end{equation}</p>
+
+<p>then</p>
+
+\[\begin{align}
+(X^{T}X)^{-1} &amp;= (V \Sigma^{T} \Sigma V^{T})^{-1} \nonumber \\[1em]
+&amp;= (V^{T})^{-1} (\Sigma^{T} \Sigma)^{-1} V^{-1} \nonumber \\[1em]
+&amp;= V (\Sigma^{T} \Sigma)^{-1} V^{T} \nonumber \\[1em]
+&amp;= \sum_{j = 1}^{p} \frac{1}{\sigma_{j}^{2}} v_{j} v_{j}^{T}
+\label{eq: svd}
+\end{align}\]
+
+<p>In the limit</p>
+
+<p>\begin{equation}
+| corr(x_{i}, x_{j}) | \rightarrow 1
+\end{equation}</p>
+
+<p>matrix $X$ becomes a singular and the smallest singular value vanishes</p>
+
+<p>\begin{equation}
+\sigma_{p} \rightarrow 0
+\end{equation}</p>
+
+<p>and, from \ref{eq: svd}, also</p>
+
+<p>\begin{equation}
+(X^{T}X)^{-1} \rightarrow \infty
+\end{equation}</p>
+
+<p>Therefore, from \ref{eq: variance} and \ref{eq: distance}, both the variance of the OLS estimator and the distance of the OLS estimator to the actual $\beta$ go to infinity.</p>
+:ET
