@@ -157,3 +157,15 @@ var addComment = {
     return document.getElementById( id );
   }
 };
+
+function showResult() {
+  comment = document.getElementById("comment-form-message").value;
+  // console.log(comment);
+  document.getElementById("comment-result-title").innerText = "Your comment:";
+  document.getElementById("comment-result").innerText = comment;
+  rerenderMath();
+}
+
+function rerenderMath() {
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+}
