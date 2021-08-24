@@ -4,7 +4,7 @@ title:  "Lasso Dual"
 subtitle: "Derivation of the Lasso solution from dual formulation using projection operator and some non-obvious properties that follow from the geometry of the dual formulation."
 author: Marko Lalovic
 date:   2021-08-01 10:34:39 +0100
-image: assets/posts/lasso-dual/transformation-3d.png
+image: assets/posts/lasso-dual/transformation-3d.jpg
 keywords: LASSO, duality theory
 rtime: 3 min read
 ---

@@ -4,7 +4,7 @@ title:  "Ridge Regression"
 subtitle: "Derivation of ridge regression estimator and it's properties, the role of the penalty function and the analysis of regularization parameter."
 author: Marko Lalovic
 date:   2019-08-01 10:31:22 +0100
-image: assets/posts/ridge-regression/problem-resized.png
+image: assets/posts/ridge-regression/problem-resized.jpg
 keywords: Penalized regression, regularization, correlated variables
 rtime: 5 min read
 ---
