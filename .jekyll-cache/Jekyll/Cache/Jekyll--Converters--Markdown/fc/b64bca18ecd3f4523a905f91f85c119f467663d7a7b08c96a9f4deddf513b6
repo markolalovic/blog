@@ -1,7 +1,0 @@
-I"K<div class="images">
-  <img src="/blog/assets/posts/ridge-regression/problem.svg" />
-  <div class="label">
-    <strong>Figure 1:</strong> As the correlation between regressors increases the OLS method becomes unstable while the ridge regression method produces stable estimates regardless of the given data in $X$.
-  </div>
-</div>
-:ET

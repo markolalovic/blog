@@ -1,7 +1,0 @@
-I"{<div class="images">
-  <img src="/blog/assets/posts/ols-regression/problem.svg" />
-  <div class="label">
-    <strong>Figure 1:</strong> As the correlation between regressors increases, the OLS method becomes unstable. In the limit $|corr(x_{i}, x_{j})| \rightarrow 1$, the OLS objective function is no longer strictly convex and OLS solution is no longer unique.
-  </div>
-</div>
-:ET
