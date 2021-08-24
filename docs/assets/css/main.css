@@ -42,6 +42,10 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
+strong {
+    font-family: 'ColaborateMediumRegular', Arial, sans-serif;
+    font-weight: 700;
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm

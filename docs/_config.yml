@@ -16,3 +16,5 @@ plugins:
 
 # Output settings
 # permalink: /blog/assets/posts/
+# permalink
+permalink: /:title
