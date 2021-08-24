@@ -158,12 +158,11 @@ var addComment = {
   }
 };
 
-function showResult() {
-  comment = document.getElementById("comment-form-message").value;
-  // console.log(comment);
+function previewComment() {
+  const content = document.getElementById("comment-form-message").value;
   document.getElementById("comment-result-title").innerText = "Your comment:";
-  document.getElementById("comment-result").innerText = comment;
-  rerenderMath();
+  document.getElementById("comment-result").innerText = content;
+  rerenderMath(); // apply MathJax on the comment content
 }
 
 function rerenderMath() {

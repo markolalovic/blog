@@ -158,7 +158,7 @@ var addComment = {
   }
 };
 
-function showResult() {
+function previewComment() {
   const content = document.getElementById("comment-form-message").value;
   document.getElementById("comment-result-title").innerText = "Your comment:";
   document.getElementById("comment-result").innerText = content;
