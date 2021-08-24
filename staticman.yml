@@ -47,17 +47,17 @@ comments:
 
   # Notification settings. When enabled, users can choose to receive notifications
   # via email when someone adds a reply or a new comment.
-  notifications:
-    # Enable notifications
-    enabled: true
-
-    # (!) ENCRYPTED
-    # Mailgun API key
-    apiKey: "lsGDqFuHznyYQN1e5CzCh1OiHDs6R0oibGPOwZUVOOi/YfyMnkfgJFCP+VWEauENi9MDHVDCJKdkYr5ecd8zMbB7aP1AhWtuw6Axcn6TRwWHJnQIIqYr6DX3alTHtiatfqTyEa85Lkqtsxy3AIY8mT6L88AdYnPOXnuRVRXLKzXdjXrnZNGgdM8Q/X4JvNwXdtOzHG6trMXLRvnloftIOsx0/V6erHQn9eIT71ZSHQ4FrhfR7JwnWNhDLCn2XQZX1Rkh5Y1MqEmXc7sxEjdLRj7e4pPdC+bT8KFPK2dZt7ETkvfGz4jpQ+/qwJgwEYOhox3Th4mXQZWZSkxugK19aw=="
-
-    # (!) ENCRYPTED
-    # Mailgun domain (encrypted)
-    domain: "gj7/ZEPJ5qV4fhWs3N3eQxCNiRlqTd7nBYtyDmXwF2BAoNK6FtHW0O0w7AbTWYR/y0XKT9s64cJEYDnWPIYDEIbnDpHEV7uHjsG3lX5Zpmx0ksyNF7A/ubDCrnPVoBU9+VFDtfGAy9CWxDfLcj6LZ2NNDISrwx0SsXMhE/b5Fbqk303QpQh5OifDIXEjQNfb4Sk+2a/4H6OK0RydHqq43hSW5VPxIQfg1gwk2KcK5S0FE8N//QL1BsHSfnvgcP5hP3khlX4dq/egc16TGXyr0Sl0t3xOvoyQR4xu+Jk//ZoIVG9ap7zAU6FKrlKGpvRc8GhZkyTIo+eDEzz7jNQ4Yg=="
+  # notifications:
+  #   # Enable notifications
+  #   enabled: false
+  #
+  #   # (!) ENCRYPTED
+  #   # Mailgun API key
+  #   apiKey: "lsGDqFuHznyYQN1e5CzCh1OiHDs6R0oibGPOwZUVOOi/YfyMnkfgJFCP+VWEauENi9MDHVDCJKdkYr5ecd8zMbB7aP1AhWtuw6Axcn6TRwWHJnQIIqYr6DX3alTHtiatfqTyEa85Lkqtsxy3AIY8mT6L88AdYnPOXnuRVRXLKzXdjXrnZNGgdM8Q/X4JvNwXdtOzHG6trMXLRvnloftIOsx0/V6erHQn9eIT71ZSHQ4FrhfR7JwnWNhDLCn2XQZX1Rkh5Y1MqEmXc7sxEjdLRj7e4pPdC+bT8KFPK2dZt7ETkvfGz4jpQ+/qwJgwEYOhox3Th4mXQZWZSkxugK19aw=="
+  #
+  #   # (!) ENCRYPTED
+  #   # Mailgun domain (encrypted)
+  #   domain: "gj7/ZEPJ5qV4fhWs3N3eQxCNiRlqTd7nBYtyDmXwF2BAoNK6FtHW0O0w7AbTWYR/y0XKT9s64cJEYDnWPIYDEIbnDpHEV7uHjsG3lX5Zpmx0ksyNF7A/ubDCrnPVoBU9+VFDtfGAy9CWxDfLcj6LZ2NNDISrwx0SsXMhE/b5Fbqk303QpQh5OifDIXEjQNfb4Sk+2a/4H6OK0RydHqq43hSW5VPxIQfg1gwk2KcK5S0FE8N//QL1BsHSfnvgcP5hP3khlX4dq/egc16TGXyr0Sl0t3xOvoyQR4xu+Jk//ZoIVG9ap7zAU6FKrlKGpvRc8GhZkyTIo+eDEzz7jNQ4Yg=="
 
   # (*) REQUIRED
   #
@@ -74,6 +74,6 @@ comments:
     email: md5
 
   reCaptcha:
-    enabled: true
-    siteKey: "6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"
-    secret: "O5OVSohsGEtdnc6hCQE2mD+Y1UT7PrcqjuxgASI0suD7Arl0GdRbNx137PkxnUHmcx4i1AwAR66z1KgXEpG6punx/SIfeHm8ChyF5AvMzx0jIbyRqBwr2AMaiY1FozcwRmiPMlD8R8BnwHTOaMIiqBk6f5RiuPsjsyQnp2UmNSp4SyKQeszZVe+hMqmHTlhZFYidwXgEU9/I0i0VQ/DuBmk6RMHM7qWxZxlo1iTIi+Xh2XUGYBIrjRC7e0q2fWhVcZUuraRZZQ8gNozXPs0LtoRk6i9ORW4a12l9R+AUragHF/k016VTjtIpjeb3fXMkF8bHgzOnpip8Obb3v8Fm1A=="
+    enabled: false
+    # siteKey: "6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"
+    # secret: "O5OVSohsGEtdnc6hCQE2mD+Y1UT7PrcqjuxgASI0suD7Arl0GdRbNx137PkxnUHmcx4i1AwAR66z1KgXEpG6punx/SIfeHm8ChyF5AvMzx0jIbyRqBwr2AMaiY1FozcwRmiPMlD8R8BnwHTOaMIiqBk6f5RiuPsjsyQnp2UmNSp4SyKQeszZVe+hMqmHTlhZFYidwXgEU9/I0i0VQ/DuBmk6RMHM7qWxZxlo1iTIi+Xh2XUGYBIrjRC7e0q2fWhVcZUuraRZZQ8gNozXPs0LtoRk6i9ORW4a12l9R+AUragHF/k016VTjtIpjeb3fXMkF8bHgzOnpip8Obb3v8Fm1A=="
