@@ -37,7 +37,7 @@ Two examples of arrangements are shown in **Figure 2**. Let $d=3$ be the depth o
 
 $$
 h_{1} = 0.5, \quad h_{2} = 1, \quad h_{3} = 1.5, \quad h_{4} = 2,
-\quad h_{5} = 2.5.
+\quad h_{5} = 2.5
 $$
 
 The pressure that the water exerts increases with depth and the metal rings at the bottom of the tank have to hold a lot more pressure than the metal rings at the top of the tank. Therefore the structural strength of the lower part of the tank is lower than that of the upper part of the tank. Hence, this arrangement of metal rings is a poor choice.
@@ -65,7 +65,7 @@ $$
 of some continuously distributed random variable $X$ that represents the pressure in the tank, defined on the interval $[0, 3]$. The corresponding distribution function is then:
 
 $$
-F_{X}(x) = \frac{1}{9} \cdot x^{2}.
+F_{X}(x) = \frac{1}{9} \cdot x^{2}
 $$
 
 Define the limits of the interval $[0, 3]$:
@@ -84,7 +84,7 @@ $$
 where $x_{q}$ are quantiles, that is:
 
 $$
-F_{X}(x_{q}) = q.
+F_{X}(x_{q}) = q
 $$
 
 The boundaries are marked in dotted red in **Figure 2B**. At each subinterval, the integral of the density is equal to 0.2. This method, of dividing a continuous distribution into subintervals with equal density, is called *Equal Frequency Discretization*.
@@ -92,7 +92,7 @@ The boundaries are marked in dotted red in **Figure 2B**. At each subinterval, t
 Finally, we arrange the metal rings so that each ring is exactly in the centroid $h_{k}$​ of density $f_{X}$ at the subinterval $k$:
 
 $$
-h_{k} = \frac{\int_{x_{k}}^{x_{k+1}} x f(x) dx}{\int_{x_{k}}^{x_{k+1}} f(x) dx}.
+h_{k} = \frac{\int_{x_{k}}^{x_{k+1}} x f(x) dx}{\int_{x_{k}}^{x_{k+1}} f(x) dx}
 $$
 
 This way, each metal ring needs to hold the same amount of pressure. Therefore the structural strength is the same everywhere and this arrangement of metal rings is optimal.
@@ -101,7 +101,7 @@ In the optimal arrangement, the calculated heights of the metal rings from the b
 
 $$
 h_{1} = 0.16, \quad h_{2} = 0.49, \quad h_{3} = 0.88, \quad
-h_{4} = 1.36, \quad h_{5} = 2.11.
+h_{4} = 1.36, \quad h_{5} = 2.11
 $$
 
 The solution is shown in **Figure 2b**.
