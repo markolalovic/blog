@@ -1,0 +1,8 @@
+_id: 9fb60320-05e8-11ec-9b75-01ee5a88ac48
+_parent: 'https://markolalovic.github.io/blog/lasso-dual'
+replying_to_uid: ''
+message: "Just testing ${\\TeX}$ support \r\n\r\nInline \\$ $\\dots$ \\$: $\\int_0^\\infty \\mathrm{e}^{-x}\\,\\mathrm{d}x$\r\n\r\nDisplayed \\$\\$ $\\dots$ \\$\\$:\r\n$$\r\n\\begin{align}\r\n\\boldsymbol{\\beta} &= (\\beta_1,\\beta_2,\\dotsc,\\beta_n)\\\\[1em]\r\nx &= \\beta_{0} + \\cfrac{1}{\\beta_{1}\r\n         + \\cfrac{1}{\\beta_{2}\r\n         + \\cfrac{1}{\\beta_{3} + \\cfrac{1}{ \\beta_{4} } } } }\r\n\\end{align}\r\n$$"
+name: Marko
+email: f592f3738f05b594c9be5fc9dd9612ee
+hp: ''
+date: 1629925721
