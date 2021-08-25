@@ -785,7 +785,7 @@ fieldset {
 /* each staticman text field is wrapped in this div */
 .textfield {
 	 max-width: 100%;
-	 padding: 0.5rem 0;
+   /* padding: 0.5rem 0; */
 }
 
 /* fields except the comment field get this class too
@@ -819,16 +819,17 @@ textarea {
 }
 
 .button {
+   font-size: 15px;
 	 background: rgba(158, 158, 158, .2);
 	 box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .14);
 	 border: none;
 	 border-radius: 2px;
-	 padding: 4px 8px;
+	 padding: 5px 9px;
 	 overflow: hidden;
 	 cursor: pointer;
 	 -webkit-transition-duration: 0.4s;
 	 transition-duration: 0.4s;
-	 margin: 4px 15px 0px 0px;
+	 margin: 10px 15px 5px 0px;
 }
 
 button:hover {

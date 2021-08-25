@@ -16,6 +16,8 @@ function recaptchaCallback() {
   var $comments = $('.js-comments');
 
   $('.js-form').submit(function () {
+    console.log('submit clicked');
+
     var form = this;
     const reCaptcha = document.getElementById("comment-form-submit").getAttribute('name');
     if (reCaptcha !== 'checked') {
@@ -176,6 +178,9 @@ var addComment = {
 };
 
 function previewComment() {
+  document.getElementById("error-result-title").innerText = "";
+  document.getElementById("error-result").innerText = "";
+
   const content = document.getElementById("comment-form-message").value;
   document.getElementById("comment-result-title").innerText = "Your comment:";
   document.getElementById("comment-result").innerText = content;

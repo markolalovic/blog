@@ -12,39 +12,39 @@
     </label>
   </div>
 
-    <div class="textfield narrowfield">
-      <label for="comment-form-name">Name
-        <input class="textfield__input" name="fields[name]" type="text" id="comment-form-name" placeholder="Your name (required)" required/>
-      </label>
-    </div>
+  <div class="textfield narrowfield">
+    <label for="comment-form-name">Name
+      <input class="textfield__input" name="fields[name]" type="text" id="comment-form-name" placeholder="Your name (required)" required/>
+    </label>
+  </div>
 
-    <div class="textfield narrowfield">
-      <label for="comment-form-email">E-mail
-        <input class="textfield__input" name="fields[email]" type="email" id="comment-form-email" placeholder="Your email (optional)"/>
-      </label>
-    </div>
+  <div class="textfield narrowfield">
+    <label for="comment-form-email">E-mail
+      <input class="textfield__input" name="fields[email]" type="email" id="comment-form-email" placeholder="Your email (optional)"/>
+    </label>
+  </div>
 
-    <div class="textfield narrowfield hp">
-      <label for="hp">
-        <input class="textfield__input" name="fields[hp]" id="hp" type="text" placeholder="Leave blank">
-      </label>
-    </div>
+  <div class="textfield narrowfield hp">
+    <label for="hp">
+      <input class="textfield__input" name="fields[hp]" id="hp" type="text" placeholder="Leave blank">
+    </label>
+  </div>
 
-    <!-- reCaptcha -->
-    <div id="reCaptcha" class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"></div>
-    <div class="textfield">
-      <h1 id="error-result-title"></h1>
-      <p id="error-result"></p>
-    </div>
+  <!-- reCaptcha -->
+  <div id="reCaptcha" class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"></div>
 
-    <button class="button" type="button" onclick="previewComment()">Preview</button>
-    <button name="unchecked" class="button" id="comment-form-submit">Submit</button>
+  <button class="button" type="button" onclick="previewComment()">Preview</button>
+  <button class="button" id="comment-form-submit">Submit</button>
 
-    <div class="textfield">
-      <h1 id="comment-result-title"></h1>
-      <p id="comment-result"></p>
-    </div>
+  <div class="textfield">
+    <h1 id="error-result-title"></h1>
+    <p id="error-result"></p>
+  </div>
 
+  <div class="textfield">
+    <h1 id="comment-result-title"></h1>
+    <p id="comment-result"></p>
+  </div>
 </form>
 
 <article class="modal mdl-card mdl-shadow--2dp">
