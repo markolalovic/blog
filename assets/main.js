@@ -1,9 +1,15 @@
 // Static comments
-// from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js
+// mostly from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js
+// with added reCaptcha error handling and MathJax support for comment
 
 function recaptchaCallback() {
-  console.log('reCaptcha is checked');
-  $('#comment-form-submit').setAttribute('name', 'checked');
+  return new Promise(function(resolve, reject) {
+    console.log('reCaptcha is checked');
+    document.getElementById("comment-form-submit").setAttribute('name', 'checked');
+    document.getElementById("error-result-title").innerText = "";
+    document.getElementById("error-result").innerText = "";
+    resolve();
+  });
 };
 
 (function ($) {
@@ -15,40 +21,41 @@ function recaptchaCallback() {
     if (reCaptcha !== 'checked') {
       document.getElementById("error-result-title").innerText = "Error:";
       document.getElementById("error-result").innerText = "Please click \"I\'m not a robot\" checkbox.";
-    }
-    
-    $("#comment-form-submit").html(
-      '<svg class="icon spin"><use xlink:href="#icon-loading"></use></svg> Sending...'
-    );
-    $(form).addClass('disabled');
-    $.ajax({
-      type: $(this).attr('method'),
-      url:  $(this).attr('action'),
-      data: $(this).serialize(),
-      contentType: 'application/x-www-form-urlencoded',
-      success: function (data) {
-        showModal('Comment submitted', 'Thanks! Your comment is <a href="https://github.com/markolalovic/blog/pulls" target="_blank">pending</a>. It will appear when approved.');
+    } else {
+      $("#comment-form-submit").html(
+        '<svg class="icon spin"><use xlink:href="#icon-loading"></use></svg> Sending...'
+      );
+      $(form).addClass('disabled');
 
-        $("#comment-form-submit")
-          .html("Submit");
+      $.ajax({
+        type: $(this).attr('method'),
+        url:  $(this).attr('action'),
+        data: $(this).serialize(),
+        contentType: 'application/x-www-form-urlencoded',
+        success: function (data) {
+          showModal('Comment submitted', 'Thanks! Your comment is <a href="https://github.com/markolalovic/blog/pulls" target="_blank">pending</a>. It will appear when approved.');
 
-        $(form)[0].reset();
-        $(form).removeClass('disabled');
-        if (window.grecaptcha) {
-          grecaptcha.reset();
+          $("#comment-form-submit")
+            .html("Submit");
+
+          $(form)[0].reset();
+          $(form).removeClass('disabled');
+          if (window.grecaptcha) {
+            grecaptcha.reset();
+          }
+        },
+        error: function (err) {
+          console.log(err);
+          var ecode = (err.responseJSON || {}).errorCode || "unknown";
+          showModal('Error', 'An error occured.<br>[' + ecode + ']');
+          $("#comment-form-submit").html("Submit")
+          $(form).removeClass('disabled');
+          if (window.grecaptcha) {
+            grecaptcha.reset();
+          }
         }
-      },
-      error: function (err) {
-        console.log(err);
-        var ecode = (err.responseJSON || {}).errorCode || "unknown";
-        showModal('Error', 'An error occured.<br>[' + ecode + ']');
-        $("#comment-form-submit").html("Submit")
-        $(form).removeClass('disabled');
-        if (window.grecaptcha) {
-          grecaptcha.reset();
-        }
-      }
-    });
+      });
+    };
 
     return false;
   });
@@ -173,8 +180,8 @@ function previewComment() {
   document.getElementById("comment-result-title").innerText = "Your comment:";
   document.getElementById("comment-result").innerText = content;
   rerenderMath(); // apply MathJax on the comment content
-}
+};
 
 function rerenderMath() {
   MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-}
+};
