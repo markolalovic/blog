@@ -4,8 +4,8 @@
   <input type="hidden" id="comment-replying-to-uid" name="fields[replying_to_uid]" value="">
   <input type="hidden" name="options[slug]" value="{{ page.slug }}">
   {% if site.reCaptcha.enabled %}
-  <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.reCaptcha.siteKey }}">
-  <input type="hidden" name="options[reCaptcha][secret]"  value="{{ site.reCaptcha.secret }}">
+  <input type="hidden" name="options[reCaptcha][siteKey]" value="6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf">
+  <input type="hidden" name="options[reCaptcha][secret]" value="cyyVkQvz/D6vLDVwaCr01BHa2U2NKIJ2giMOwFI2wXNdAhXR8q2/dHg/eAc/f+nSDD617qqfMuw5Tgy5+BByn/DFg4BWAPp8ndPIqWeXuve3khbutaFfGpGJPyJ2zvE3VvciiwNDEWauxdlXBXYm3a7QF6Q1Hzwv+nxAuMbBi03SlzYcdwzt/r2zwMLTAbaGA8pksjW7RFRgODL7w6qu+7UtIb/FDoD7hhNm1UJ2zn0zFl+ZBDbMpym5RYrjYURP4sk02KCcSycL5qOSPuDAmrdWLOrQC8glNWDjQXDP9wvFHadui3uAAEituZQROYEDO9dzVkS3yOaAAI/doADTyA==">
   {% endif %}
 
   <div class="textfield">
@@ -33,7 +33,7 @@
     </div>
 
     {% if site.reCaptcha.enabled %}
-    <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
+    <div id="reCaptcha" class="g-recaptcha" data-sitekey="6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"></div>
     {% endif %}
 
     <button class="button" type="button" onclick="previewComment()">Preview</button>
