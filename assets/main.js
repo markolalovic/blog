@@ -2,7 +2,7 @@
 // from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js
 
 function recaptchaCallback() {
-  console.log('reCaptcha checked');
+  console.log('reCaptcha is checked');
   $('#comment-form-submit').setAttribute('name', 'checked');
 };
 
@@ -49,7 +49,7 @@ function recaptchaCallback() {
         }
       }
     });
-    }
+
     return false;
   });
 
