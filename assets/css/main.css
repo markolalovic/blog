@@ -196,6 +196,7 @@ pre>code {
 }
 
 .wrapper {
+    width: 42em;
     max-width: -webkit-calc(800px - (30px * 2));
     max-width: calc(800px - (30px * 2));
     margin-right: auto;
