@@ -4,7 +4,7 @@ email: marko.lalovic@yahoo.com
 description: >- # head meta info for Google search results
   This website contains my blog generated using Jekyll.
   View the README file on [GitHub](https://github.com/markolalovic/blog).
-baseurl: "/blog/"
+baseurl: "/blog"
 url: "https://markolalovic.github.io"
 twitter_username: MarkoLalovic
 github_username:  markolalovic
