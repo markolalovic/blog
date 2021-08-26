@@ -945,3 +945,20 @@ button:hover {
         opacity: 0.65;
     }
 }
+
+/* Share buttons */
+.sharebuttons svg {
+  width: 70px;
+  height: 23px;
+  box-shadow: 0 2px 1px 1px rgba(0, 0, 0, .14);
+  border: none;
+  border-radius: 2px;  
+}
+
+.twitter>svg path {
+    fill: #0D7DBB;
+}
+
+.twitter:hover>svg path {
+    fill: #828282;
+}
