@@ -1,12 +1,10 @@
 ---
 layout: post
-title:  "Multicollinearity Effect on OLS Regression"
+title:  "Multicollinearity effect on OLS regression"
 subtitle: "The cause of inflation effect of highly correlated regressors on ordinary least squares estimator."
 author: Marko Lalovic
 date:   2019-07-14 21:41:01 +0100
-image: assets/posts/ols-regression/problem-resized.jpg
-keywords: Regression, correlated variables
-rtime: 3 min read
+keywords: regression, correlated variables
 ---
 <div class="images">
   <img src="/blog/assets/posts/ols-regression/problem.svg">

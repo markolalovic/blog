@@ -1,17 +1,15 @@
 ---
 layout: post
-title:  "Lasso Dual"
+title:  "Lasso dual"
 subtitle: "Derivation of the Lasso solution from dual formulation using projection operator and some non-obvious properties that follow from the geometry of the dual formulation."
 author: Marko Lalovic
 date:   2021-08-01 10:34:39 +0100
-image: assets/posts/lasso-dual/transformation-3d.jpg
-keywords: LASSO, duality theory
-rtime: 3 min read
+keywords: LASSO, duality
 ---
 <div class="images">
   <img src="/blog/assets/posts/lasso-dual/transformation-3d.svg">
   <div class="label">
-    <strong>Figure 1:</strong> Illustration when $n=p=3$. (Drawn using <a target="_blank" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi library</a>.)
+    <strong>Figure 1:</strong> Illustration when $n=p=3$ of primal and dual admissible sets $C$ and $D$. Solution to (1) can be determined by a projection of $y$. Furthermore, if $A^{-1}$ exists, then the primal solution can be expressed as a function of $y$.
   </div>
 </div>
 
@@ -28,7 +26,9 @@ $$
 
 This type of penalized regression is called Lasso; see Tibshirani's original paper [<a href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf" target="_blank">1</a>].
 
-In this post, we first derive the dual problem, then show that the solution $x^{\*}$ can be determined with the help of a projection operator. Some nice and non-obvious properties of the solution $x^{\*}$ follow from the geometry of the dual formulation. We finish with the observation that the Lasso solution is non-expansive as a function of $y$. This is not obvious and would probably be hard to show without the dual formulation.
+In this post, we first derive the dual problem, then show that the solution $x^{\*}$ can be determined with the help of a projection operator. Under the assumption that $A^{-1}$ exists, we can further express the solution $x^{\*}$ with the help of a mapping $\left(A^{T}\right)^{-1}$  from the dual space as a function of $y$; see **Figure 1**.
+
+Some nice and non-obvious properties of the solution $x^{\*}$ follow from the geometry of the dual formulation. For example that the Lasso solution is non-expansive as a function of $y$. This is not obvious and would probably be hard to show without the dual formulation.
 
 <!-- Section 1 -->
 ## Formulation of the dual problem
@@ -273,7 +273,7 @@ $$
 <div class="images">
   <img src="/blog/assets/posts/lasso-dual/transformation-2d.svg">
   <div class="label">
-    <strong>Figure 2:</strong> Illustration when $n=p=2$.
+    <strong>Figure 2:</strong> Illustration when $n=p=2$ of primal and dual admissible sets $C$ and $D$.
   </div>
 </div>
 

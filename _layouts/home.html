@@ -10,29 +10,30 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
-        <img src="{{- post.image | relative_url -}}" alt="" class="blog-roll-image">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <a class="post-link" href="{{ post.url | relative_url }}">
-          {{ post.title | escape }}
-        </a>
-        <span class="post-description">{{ post.subtitle | escape }}</span>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
+        <div>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          <span class="post-description">{{ post.subtitle | escape }}</span>
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </div>
+        <!-- e.g.: feature_image: posts/ols-regression/problem.svg -->
+        {% if post.feature_image %}
+          <div class="feature-image">
+            <img src="{{ '/assets/' | append: post.feature_image | relative_url }}" />
+          </div>
+        {% endif %}
       </li>
       {%- endfor -%}
     </ul>
-  {%- endif -%}
-
-  <div>
     <p class="rss post-meta">
-      Subscribe via <a class="btn btn-rss" href="/blog/feed.xml" target="_blank">RSS</a>
+      Subscribe <a class="btn btn-rss" href="/blog/feed.xml" target="_blank">via RSS</a>
     </p>
-  </div>
-
+  {%- endif -%}
 </div>
