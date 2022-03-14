@@ -218,7 +218,7 @@ pre>code {
   text-decoration: underline;
 }
 .hovhov {
-  /* TODO: what was this class? */
+  /*  :) */
   text-decoration: underline;
 }
 
@@ -229,7 +229,6 @@ pre>code {
     margin-bottom: 0;
     float: right;
     color: #424242;
-    padding: 0px 50px 0px 0px;
 }
 
 .site-nav, .site-nav:visited {
@@ -249,6 +248,10 @@ pre>code {
 
 .site-nav .page-link:not(:first-child) {
     margin-left: 20px;
+}
+
+.nav-trigger {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {

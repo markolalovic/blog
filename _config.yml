@@ -1,9 +1,8 @@
 # Site settings
 title: Marko Lalovic
 email: marko.lalovic@yahoo.com
-description: >- # head meta info for Google search results
-  This website contains my blog generated using Jekyll.
-  View the README file on [GitHub](https://github.com/markolalovic/blog).
+description: >-
+  Technical blog on machine learning, programming and and other math-related topics.
 baseurl: "/blog/"
 url: "https://markolalovic.github.io"
 twitter_username: MarkoLalovic
@@ -13,6 +12,7 @@ github_username:  markolalovic
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Output settings
 permalink: /:title
