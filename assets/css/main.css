@@ -250,10 +250,6 @@ pre>code {
     margin-left: 20px;
 }
 
-.nav-trigger {
-  display: none;
-}
-
 @media screen and (max-width: 600px) {
     .site-nav {
         position: absolute;
