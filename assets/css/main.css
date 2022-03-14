@@ -217,77 +217,24 @@ pre>code {
 .site-title a:hover {
   text-decoration: underline;
 }
+
 .hovhov {
   /*  :) */
   text-decoration: underline;
 }
 
 .site-nav {
-    font-size: 18px;
+    font-size: 19px; /* 24px */
     line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
     float: right;
-    color: #424242;
 }
-
 .site-nav, .site-nav:visited {
-  color: #424242;
+    color: #424242;
 }
 .site-nav a:hover {
   text-decoration: underline;
-  color: #111;
-}
-.site-nav .menu-icon {
-    display: none;
-}
-.site-nav .page-link {
-    color: #111;
-    line-height: 1.5;
-}
-
-.site-nav .page-link:not(:first-child) {
-    margin-left: 20px;
-}
-
-@media screen and (max-width: 600px) {
-    .site-nav {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: #fdfdfd;
-        border: 1px solid #e8e8e8;
-        border-radius: 5px;
-        text-align: right;
-    }
-    .site-nav .menu-icon {
-        display: block;
-        float: right;
-        width: 36px;
-        height: 26px;
-        line-height: 0;
-        padding-top: 10px;
-        text-align: center;
-    }
-    .site-nav .menu-icon>svg {
-        width: 18px;
-        height: 15px;
-    }
-    .site-nav .menu-icon>svg path {
-        fill: #424242;
-    }
-    .site-nav .trigger {
-        clear: both;
-        display: none;
-    }
-    .site-nav:hover .trigger {
-        display: block;
-        padding-bottom: 5px;
-    }
-    .site-nav .page-link {
-        display: block;
-        padding: 5px 10px;
-    }
 }
 
 
