@@ -4,7 +4,7 @@ email: marko.lalovic@yahoo.com
 description: >-
   Technical blog on machine learning, programming and and other math-related topics.
 baseurl: "/blog/"
-icon: "📖"
+icon: 📖
 url: "https://markolalovic.me"
 twitter_username: MarkoLalovic
 github_username:  markolalovic
