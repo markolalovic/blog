@@ -312,7 +312,7 @@ We notice that, since $P_{C}$ is a projection onto convex set $C$, it follows th
 
 ## References
 [1] Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. J. Royal. Statist. Soc B., Vol. 58, No. 1, pages 267-288).
-<a target="_blank" href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf">http://statweb.stanford.edu/~tibs/lasso/lasso.pdf</a>
+<a target="_blank" href="https://webdoc.agsci.colostate.edu/koontz/arec-econ535/papers/Tibshirani%20(JRSS-B%201996).pdf</a>
 
 [2] S. Boyd and L. Vandenberghe, “Subgradients Notes”, (2008), Stanford University
 <a target="_blank" href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf">https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf</a>
