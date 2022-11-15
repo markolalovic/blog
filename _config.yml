@@ -1,11 +1,11 @@
 # Site settings
 title: Marko Lalovic
-email: marko.lalovic@yahoo.com
+email: ml.markolalovic@gmail.com
 description: >-
   Technical blog on machine learning, programming and and other math-related topics.
 baseurl: "/blog/"
 icon: 📖
-url: "https://markolalovic.com"
+url: "https://markolalovic.github.io"
 twitter_username: MarkoLalovic
 github_username:  markolalovic
 
