@@ -1,26 +1,85 @@
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
 # Site settings
-title: Marko Lalovic
-email: ml.markolalovic@gmail.com
-description: >-
-  Technical blog on machine learning, programming and and other math-related topics.
-baseurl: "/blog/"
-icon: 📖
-url: "https://markolalovic.github.io"
-twitter_username: MarkoLalovic
-github_username:  markolalovic
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+title: ML Blog
+author: Marko Lalovic
+last_modified: "2024-05-17"
+about: "https://lalovic.io"
+email: marko@lalovic.me
+description: "A technical blog."
+baseurl: "/blog"
+url: "https://lalovic.io"
 
-# Output settings
-permalink: /:title
+repository: markolalovic/blog # for github-metadata
+github_username: markolalovic
 
-# Comments
-staticman_url: https://markos-staticman.herokuapp.com/v2/entry/markolalovic/blog/main/comments
-comments: true
-reCaptcha:
-  siteKey: "6Ld9SSAcAAAAAIOAnnTxS877afNki9ImVkuOPCKf"
-  secret: "s8VT5a9nr8XJEDMua1npoAfWZJ/gUHXXrwwRbtVTHL/wTtvRsKuEc24mA5RVT61TSsldsgna/gXCc/epqQLr7oLvRFRMn45WLTsE121uBc4fDmED7PNzRfNkWw7//1uZQ3cpdr1rNM9gGcdHzgEJoolkkGmYDG4wNDKBurjFJ7sLXxhqeZtaJt8kqrrBQEKUXnBZwTriDTPpda0iCmZpc4509WdGtCpGR082wQGxNSGTX+zbj5PMO88mrjumXGYx7OH9R31dz2nVjmHjfYgEgOlNFBpdO1wKMB7IzC/qtxc9W9OVd6bpBHEiRYJdCf+idnot/zdVtqMHCJvf1RwlxdU/JxBnElc9l6fmCrSl1bJladliu7xUIqCyeEzz+1CCHhgnHpUSY5+VhTKx62W04qKoMh+JoN5ZHozH8kthkTNnpVqSXB8jjyP4kZEccrSfQ17sa4qlM2++MrYDolFhA9Fp1flxOBBzjCR8vhiuIXtI2iPXdxnvIIJfwuyX3AxJfdK1lwRtCaZKRy6IT3FEzqRc521SVsGqUByATEOmXYSxDCx+bonyyDd8QE4TNPSIyY+/y0Vg0o1BUeoIu6oaUjeOmp6RpPU116xwXwkpqG8PV21+oFkVkOBUDR/hAmd/b7y1F4ZN2puGrtEiVMI8kRjBMa0wy4JxyQyOb95p69U="
+collections:
+  my_posts:
+    permalink: "/:path/"
+    output: true
+
+# JTD settings
+theme: just-the-docs
+
+just_the_docs:
+  collections:
+    my_posts:
+      name: Posts
+
+favicon_ico: "/assets/icons/favicon.ico"
+
+heading_anchors: false
+
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+
+# supress jekyll build warnings
+sass:
+  quiet_deps: true
+
+# jekyll-scholar plugin settings
+scholar:
+  style: apa
+  locale: en
+  sort_by: none
+  order: ascending
+  source: ./_bibliography
+  bibliography: simple.bib
+  bibliography_template: ""
+  replace_strings: true
+  join_strings:    true
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+  query: "@*"
+  bibtex_filters:
+    - HtmlLinks
+    - DOILinks  
+
+# comments via contact forms
+comments:
+  use: "staticforms"
+  staticforms:
+    action: "https://api.staticforms.xyz/submit"
+    token: "4e5a5ee1-5fd9-47ed-9b85-aecdabd0c006"
+  web3forms:
+    action: "https://api.web3forms.com/submit"
+    token: "20a51aef-da18-46db-a079-fd60a0b9c065"

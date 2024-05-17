@@ -1,0 +1,258 @@
+<div id="figure1" class="imgcap-nbd">
+  <img id="tda-example-viz-static" src="/blog/assets/posts/tda-digits/tda-example.svg" width="80%" class="invertImg">
+  <div id="tda-example-viz-dynamic" class="div-for-inline-svg width80p">
+    {% include svgs/tda-example-viz.svg %}
+  </div>
+  <div class="thecap margin-top-correct">
+    Figure 1: Applying this technique on (A) an image of a handwritten digit 8, 
+    (B) extracted embedded graph and (C) the resulting Betti barcodes.
+  </div>
+</div>
+<!-- Run viz -->
+<script>
+  function drawRect(name, x, y, w, h, rectStyle) {
+    var aRect = document.createElementNS(svgns, 'rect');
+    aRect.setAttributeNS(null, "id", name);
+    aRect.setAttribute('x', x);
+    aRect.setAttribute('y', y);
+    aRect.setAttribute('width', w);
+    aRect.setAttribute('height', h);
+    aRect.setAttributeNS(null, "style", rectStyle);
+    svg.appendChild(aRect);
+  }
+
+  function drawPoint(name, x, y) {
+    var size = 3.3;
+    var circle = document.createElementNS(svgns, "circle");
+    circle.setAttributeNS(null, "id", name);
+    circle.setAttributeNS(null, "cx", x);
+    circle.setAttributeNS(null, "cy", y);
+    circle.setAttributeNS(null, "r", size);
+    circle.setAttributeNS(null, "style", pointStyle);    
+    svg.appendChild(circle);
+    return circle;
+  }
+
+  function drawLine(name, x1, y1, x2, y2, lineStyle) {
+    var aLine = document.createElementNS(svgns, "line");
+    aLine.setAttributeNS(null, "id", name);
+    aLine.setAttributeNS(null, "x1", x1);
+    aLine.setAttributeNS(null, "y1", y1);
+    aLine.setAttributeNS(null, "x2", x2);
+    aLine.setAttributeNS(null, "y2", y2);
+    aLine.setAttributeNS(null, "style", lineStyle);
+    svg.appendChild(aLine);
+    return aLine;
+  }
+
+  function updateLine(aLine, x1, y1, x2, y2) {
+    aLine.setAttributeNS(null, "x1", x1);
+    aLine.setAttributeNS(null, "y1", y1);
+    aLine.setAttributeNS(null, "x2", x2);
+    aLine.setAttributeNS(null, "y2", y2);
+  }
+
+  function update(t) {
+    y1 = rangeY[0] + stepY * t;
+    y2 = rangeY[0] + stepY * t;
+    x1 = rangeBettiX[0] + stepBettiX * t;
+    updateLine(sweepLineDigit, rangeDigitX[0], y1, rangeDigitX[1], y2);
+    updateLine(sweepLineGraph, rangeX[0], y1, rangeX[1], y2);
+    updateLine(sweepLineBetti0, x1, rangeBettiY0[0], x1, rangeBettiY0[1]);
+    updateLine(sweepLineBetti1, x1, rangeBettiY1[0], x1, rangeBettiY1[1]);
+
+    bar0X1 = rangeBettiX[0] + stepBettiX * birthTimes[0][0];
+    bar0X2 = Math.max(bar0X1, rangeBettiX[0] + stepBettiX * t);
+    bar0Y1 = rangeBettiY0[0] + bettiHeight / 2;
+    updateLine(barcode0, bar0X1, bar0Y1, bar0X2, bar0Y1, bettiLineStyle);
+
+    bar10X1 =  rangeBettiX[0] + stepBettiX * birthTimes[1][0];
+    bar10X2 = Math.max(bar10X1, rangeBettiX[0] + stepBettiX * t);
+    bar10Y1 = rangeBettiY1[0] + bettiHeight / 3;
+    updateLine(barcode10, bar10X1, bar10Y1, bar10X2, bar10Y1, bettiLineStyle);
+
+    bar11X1 = rangeBettiX[0] + stepBettiX * birthTimes[1][1];
+    bar11X2 = Math.max(bar11X1, rangeBettiX[0] + stepBettiX * t);
+    bar11Y1 = rangeBettiY1[0] + 2 * bettiHeight / 3;
+    updateLine(barcode11, bar11X1, bar11Y1, bar11X2, bar11Y1, bettiLineStyle);
+
+    const nodesTimeT = nodes.filter((node) => (node.time === t) || (node.time === t - 1));
+    const edgestTimeT = edges.filter((edge) => edge.time === t);
+
+    edgestTimeT.forEach(function(edge) {
+      /* edge: {source: '1', target: '2', time: 2} */
+      source = parseInt(edge.source) - 1;
+      target = parseInt(edge.target) - 1;
+      x1 = rangeX[0] + stepX * nodes[source].metadata.x;
+      y1 = rangeY[0] + stepY * nodes[source].metadata.y;
+      x2 = rangeX[0] + stepX * nodes[target].metadata.x;
+      y2 = rangeY[0] + stepY * nodes[target].metadata.y;
+      lines.push(drawLine("edge", x1, y1, x2, y2, edgeStyle));
+    });
+    
+    nodesTimeT.forEach(function(node) {
+      /* node: {id: '1', time: 2, metadata: {x: 3, y: 2}} */
+      nodeName = node.id;
+      nodeX = rangeX[0] + stepX * node.metadata.x;
+      nodeY = rangeY[0] + stepY * node.metadata.y;
+      points.push(drawPoint(nodeName, nodeX, nodeY));        
+    });
+  }
+
+  function removeElements() {
+    /* clear arrays for points and lines on re-runs */
+    lines.forEach(function(line) { 
+      svg.removeChild(line);
+    });
+    points.forEach(function(point) { 
+      svg.removeChild(point);
+    });
+    points = [];
+    lines = [];        
+  }
+  /* Function run() to animate the diagram */
+  function run() {
+      removeElements();
+      var button = document.getElementById("runButton");
+      button.disabled = true;
+
+      /* remove static svg and add a dummy element after viz element */
+      const svgStatic = document.getElementById("tda-example-viz-static");
+      if (svgStatic !== null) {
+        svgStatic.remove();
+        const tdaVizElement = document.getElementById("tda-example-viz-dynamic");
+        const tdaVizDummy = '<div id="tda-example-viz-dummy" class="div-dummy">';
+        tdaVizElement.insertAdjacentHTML("afterend", tdaVizDummy);
+      }
+      /* show the viz svg */
+      svg.setAttribute("display", "block");
+
+      var step = 1;
+      var t = 0;
+      var id = null;
+      clearInterval(id);
+      id = setInterval(frame, 80);
+
+      function frame() {
+        if (t < 22) {
+          t += step;
+          update(t);
+        } else {
+          clearInterval(id);
+          button.disabled = false;
+        }
+      }
+  }
+
+  const svgns = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById('tda-example-viz');
+
+  /* chart dimensions */
+  const chartWindowWidth = 1024;
+  const chartWindowHeight = 380;
+
+  const chartWidth = 268.64;
+  const chartHeight = 318.4;
+  const chartSpacing = 40;
+
+  /* points and lines styles */
+  var pointStyle = "fill: black; stroke: white; stroke-width: 0.1px";
+  var edgeStyle = "stroke: #0062ff; stroke-width: 2px;";
+  var bettiLineStyle = "stroke: #0062ff; stroke-width: 10px";
+  var sweepLineStyle = "stroke: red; stroke-width: 2px";
+
+  /**
+   *  A  - Handwritten number
+   *
+  */
+  const data = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,203,229,32],[0,0,0,0,0,0,0,0,0,0,26,47,47,30,95,254,215,13],[0,0,0,0,0,0,45,154,185,185,223,253,253,133,175,255,188,19],[0,0,0,0,0,0,110,253,253,253,246,161,228,253,253,254,92,0],[0,0,0,0,0,128,245,253,158,137,21,0,48,233,253,233,8,0],[0,0,0,0,0,139,254,223,25,0,0,36,170,254,244,106,0,0],[0,0,0,0,0,55,212,253,161,11,26,178,253,236,113,0,0,0],[0,0,0,0,0,7,155,253,228,80,223,253,253,109,0,0,0,0],[0,0,0,0,0,0,141,253,253,253,254,253,154,29,0,0,0,0],[0,0,0,0,0,0,110,253,253,253,254,179,38,0,0,0,0,0],[0,0,0,0,0,3,171,254,254,254,179,0,0,0,0,0,0,0],[0,0,0,0,0,171,253,253,253,253,178,0,0,0,0,0,0,0],[0,0,0,26,123,254,253,203,156,253,200,0,0,0,0,0,0,0],[0,0,0,93,253,254,121,13,93,253,158,0,0,0,0,0,0,0],[0,0,64,239,253,76,8,32,219,253,126,0,0,0,0,0,0,0],[0,0,133,254,191,0,5,108,234,254,106,0,0,0,0,0,0,0],[0,0,132,253,190,5,85,253,236,154,0,0,0,0,0,0,0,0],[0,0,153,253,169,192,253,253,77,0,0,0,0,0,0,0,0,0],[0,0,112,253,253,254,236,129,9,0,0,0,0,0,0,0,0,0],[0,0,17,118,243,191,113,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+  const nRows = data.length;
+  const nCols = data[0].length;
+
+  rangeDigitX = [chartSpacing, chartSpacing + chartWidth];
+  rangeDigitY = [chartSpacing, chartSpacing + chartHeight];    
+  pixelWidth = (rangeDigitX[1] - rangeDigitX[0])/nCols;
+  pixelHeight = (rangeDigitY[1] - rangeDigitY[0])/nRows;
+
+  /* grayscale handwritten number */
+  for (var i = 0; i < nRows; i++) {
+      for (var j = 0; j < nCols; j++) {
+          pixelName = `pixel${i}${j}`;
+          pixelX = rangeDigitX[0] + j * pixelWidth;
+          pixelY = rangeDigitY[0] + i * pixelHeight;
+          /* brightness = 255 - brightness, for black on white image */
+          b = 255 - data[i][j];
+          pixelStyle = `fill:rgb(${b}, ${b}, ${b});`;
+          drawRect(pixelName, pixelX, pixelY, pixelWidth, pixelHeight, pixelStyle);
+      }
+  }
+
+  sweepLineDigit = drawLine(
+    "sweep-line-digit", rangeDigitX[0], rangeDigitY[1], 
+    rangeDigitX[1], rangeDigitY[1], sweepLineStyle
+  );
+
+  /**
+   *  B  - Graph
+   *
+  */
+  const graphDataJSON = '{"graph": {"name": "digit-graph", "type": "filtration", "nodes": [{"id": "1", "time": 2, "metadata": {"x": 3, "y": 2}}, {"id": "2", "time": 2, "metadata": {"x": 4, "y": 2}}, {"id": "3", "time": 3, "metadata": {"x": 2, "y": 3}}, {"id": "4", "time": 3, "metadata": {"x": 5, "y": 3}}, {"id": "5", "time": 3, "metadata": {"x": 6, "y": 3}}, {"id": "6", "time": 4, "metadata": {"x": 2, "y": 4}}, {"id": "7", "time": 4, "metadata": {"x": 7, "y": 4}}, {"id": "8", "time": 5, "metadata": {"x": 2, "y": 5}}, {"id": "9", "time": 5, "metadata": {"x": 7, "y": 5}}, {"id": "10", "time": 6, "metadata": {"x": 3, "y": 6}}, {"id": "11", "time": 6, "metadata": {"x": 8, "y": 6}}, {"id": "12", "time": 7, "metadata": {"x": 4, "y": 7}}, {"id": "13", "time": 7, "metadata": {"x": 8, "y": 7}}, {"id": "14", "time": 8, "metadata": {"x": 5, "y": 8}}, {"id": "15", "time": 8, "metadata": {"x": 8, "y": 8}}, {"id": "16", "time": 9, "metadata": {"x": 6, "y": 9}}, {"id": "17", "time": 9, "metadata": {"x": 7, "y": 9}}, {"id": "18", "time": 10, "metadata": {"x": 7, "y": 10}}, {"id": "19", "time": 11, "metadata": {"x": 7, "y": 11}}, {"id": "20", "time": 12, "metadata": {"x": 7, "y": 12}}, {"id": "21", "time": 12, "metadata": {"x": 8, "y": 12}}, {"id": "22", "time": 12, "metadata": {"x": 9, "y": 12}}, {"id": "23", "time": 13, "metadata": {"x": 6, "y": 13}}, {"id": "24", "time": 13, "metadata": {"x": 10, "y": 13}}, {"id": "25", "time": 13, "metadata": {"x": 11, "y": 13}}, {"id": "26", "time": 14, "metadata": {"x": 6, "y": 14}}, {"id": "27", "time": 14, "metadata": {"x": 12, "y": 14}}, {"id": "28", "time": 15, "metadata": {"x": 6, "y": 15}}, {"id": "29", "time": 15, "metadata": {"x": 12, "y": 15}}, {"id": "30", "time": 16, "metadata": {"x": 6, "y": 16}}, {"id": "31", "time": 16, "metadata": {"x": 13, "y": 16}}, {"id": "32", "time": 17, "metadata": {"x": 7, "y": 17}}, {"id": "33", "time": 17, "metadata": {"x": 13, "y": 17}}, {"id": "34", "time": 18, "metadata": {"x": 8, "y": 18}}, {"id": "35", "time": 18, "metadata": {"x": 9, "y": 18}}, {"id": "36", "time": 18, "metadata": {"x": 10, "y": 18}}, {"id": "37", "time": 18, "metadata": {"x": 11, "y": 18}}, {"id": "38", "time": 18, "metadata": {"x": 12, "y": 18}}, {"id": "39", "time": 18, "metadata": {"x": 14, "y": 18}}, {"id": "40", "time": 19, "metadata": {"x": 14, "y": 19}}, {"id": "41", "time": 20, "metadata": {"x": 15, "y": 20}}], "edges": [{"source": "1", "target": "2", "time": 2}, {"source": "1", "target": "3", "time": 3}, {"source": "2", "target": "4", "time": 3}, {"source": "4", "target": "5", "time": 3}, {"source": "3", "target": "6", "time": 4}, {"source": "5", "target": "7", "time": 4}, {"source": "6", "target": "8", "time": 5}, {"source": "7", "target": "9", "time": 5}, {"source": "8", "target": "10", "time": 6}, {"source": "9", "target": "11", "time": 6}, {"source": "10", "target": "12", "time": 7}, {"source": "11", "target": "13", "time": 7}, {"source": "12", "target": "14", "time": 8}, {"source": "13", "target": "15", "time": 8}, {"source": "14", "target": "16", "time": 9}, {"source": "15", "target": "17", "time": 9}, {"source": "16", "target": "18", "time": 10}, {"source": "17", "target": "18", "time": 10}, {"source": "18", "target": "19", "time": 11}, {"source": "19", "target": "21", "time": 12}, {"source": "20", "target": "21", "time": 12}, {"source": "21", "target": "22", "time": 12}, {"source": "20", "target": "23", "time": 13}, {"source": "22", "target": "24", "time": 13}, {"source": "24", "target": "25", "time": 13}, {"source": "23", "target": "26", "time": 14}, {"source": "25", "target": "27", "time": 14}, {"source": "26", "target": "28", "time": 15}, {"source": "27", "target": "29", "time": 15}, {"source": "28", "target": "30", "time": 16}, {"source": "29", "target": "31", "time": 16}, {"source": "30", "target": "32", "time": 17}, {"source": "31", "target": "33", "time": 17}, {"source": "32", "target": "34", "time": 18}, {"source": "34", "target": "35", "time": 18}, {"source": "35", "target": "36", "time": 18}, {"source": "36", "target": "37", "time": 18}, {"source": "37", "target": "38", "time": 18}, {"source": "33", "target": "38", "time": 18}, {"source": "33", "target": "39", "time": 18}, {"source": "39", "target": "40", "time": 19}, {"source": "40", "target": "41", "time": 20}]}}';
+  const nodes = JSON.parse(graphDataJSON).graph.nodes;
+  const edges = JSON.parse(graphDataJSON).graph.edges;
+
+  /* initialize arrays for points and lines */
+  var points = [];
+  var lines = [];
+
+  /* 
+  * Set scales 
+  * scaleX: [0, 17] -> rangeX
+  * scaleY: [0, 22] -> rangeY
+  */
+  rangeX = [100 + chartWidth, 100 + 2 * chartWidth];
+  rangeY = [chartSpacing + chartHeight, chartSpacing];
+  stepX = (rangeX[1] - rangeX[0])/17;
+  stepY = (rangeY[1] - rangeY[0])/22;
+
+  /* initialize sweep line for graph */
+  sweepLineGraph = drawLine(
+    "sweep-line-graph", rangeX[0], rangeY[0], 
+    rangeX[1], rangeY[0], sweepLineStyle);
+
+
+  /**
+   *  C  - Betti barcodes
+   *
+  */
+  bettiX = 2 * chartWidth + 100 + chartSpacing;
+  bettiWidth = chartWindowWidth - bettiX - chartSpacing / 2;
+  bettiHeight = 1/3 * (chartWindowHeight - 4 * chartSpacing) - 1;
+
+  rangeBettiX = [bettiX, bettiX + bettiWidth];
+  rangeBettiY0 = [chartSpacing, chartSpacing + bettiHeight];
+  rangeBettiY1 = [
+    2 * chartSpacing + bettiHeight,
+    2 * chartSpacing + 2 * bettiHeight
+  ];
+
+  stepBettiX = (rangeBettiX[1] - rangeBettiX[0])/22;
+
+	/* initialize betti sweep lines */
+  sweepLineBetti0 = drawLine(
+    "sweep-line-betti-0", rangeBettiX[0], rangeBettiY0[0],
+    rangeBettiX[0], rangeBettiY0[1], sweepLineStyle
+  );
+  sweepLineBetti1 = drawLine(
+    "sweep-line-betti-1", rangeBettiX[0], rangeBettiY1[0],
+    rangeBettiX[0], rangeBettiY1[1], sweepLineStyle
+  ); 
+  
+  /* initialize barcodes */
+  birthTimes = {
+      0: [2],
+      1: [18, 10]
+  };
+  barcode0 = drawLine("barcode-0", 0, 0, 0, 0, bettiLineStyle);
+  barcode10 = drawLine("barcode-10", 0, 0, 0, 0, bettiLineStyle);
+  barcode11 = drawLine("barcode-10", 0, 0, 0, 0, bettiLineStyle);
+</script>

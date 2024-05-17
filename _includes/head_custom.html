@@ -1,0 +1,42 @@
+<!-- Load dark color theme -->
+<link
+    id="dark-theme"
+    rel="stylesheet"
+    href="{{ '/assets/css/just-the-docs-dark.css' | relative_url }}"
+    media="(prefers-color-scheme: dark)"
+/>
+
+<!-- Fonts:
+      post-font-family: "Noto Sans"
+      heading-font-family: "Lato"
+      mono-font-family: "Fira Code" -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+<!-- MathJax config -->
+<script type="text/javascript">
+    window.MathJax = {
+        tex: {
+            packages: ["base", "ams", "newcommand"],
+            inlineMath: [
+                ["$", "$"],
+                ["\\(", "\\)"],
+            ],
+            tags: "ams",
+        },
+        loader: {
+            load: ["ui/menu", "[tex]/ams", "[tex]/newcommand"],
+            versionWarnings: false,
+        },
+    };
+</script>
+
+<!-- MathJax snippet -->
+<script
+    type="text/javascript"
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>

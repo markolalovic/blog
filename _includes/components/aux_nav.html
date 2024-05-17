@@ -1,0 +1,148 @@
+<nav aria-label="Auxiliary" class="aux-nav">
+    <ul class="aux-nav-list">
+        <li class="aux-nav-list-item">
+          <button id="toggle-sidebar-button" name="Hide Sidebar" class="toggle-btn site-button fw-500 fs-5" onclick="toggleSidebar()">
+            {% include svgs/collapse_and_expand.svg %}
+          </button>
+        </li>
+        <li class="aux-nav-list-item">
+          <button id="toggle-theme-button" name="Swich Theme" class="toggle-btn site-button fw-500 fs-5" onclick="toggleTheme()">
+            {% include svgs/sun_and_moon.svg %}
+          </button>
+        </li>
+        <li class="aux-nav-list-item">
+          <a href="{{ site.about }}" class="site-button fw-500 fs-5">
+            About
+          </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Expand and collapse sidebar -->
+<script>
+  const toggleSidebarButton = document.getElementById("toggle-sidebar-button");
+
+  const collapseIcon = document.getElementById("collapse-icon");
+  const expandIcon = document.getElementById("expand-icon");
+
+  const currentURL = window.location.href.split('/');
+  if (currentURL.at(-2) !== 'blog') {
+    toggleSidebarButton.setAttribute("title", "Collapse sidebar");
+    collapseIcon.setAttribute("display", "block");
+    expandIcon.setAttribute("display", "none");
+  }
+
+  function toggleSidebar() {
+    var sidebarComponent = document.getElementById("side-bar-component");
+    var mainComponent = document.getElementById("top");
+
+    if (sidebarComponent !== null) {
+      sidebarComponent.remove();
+
+      toggleSidebarButton.setAttribute("title", "Expand sidebar");
+      collapseIcon.setAttribute("display", "none");
+      expandIcon.setAttribute("display", "block");
+
+      mainComponent.style.display = "block";
+      mainComponent.style.position = "absolute";
+      mainComponent.style.marginLeft = "0%";
+
+      const mainCompWidth = mainComponent.offsetWidth;
+      const vpWidth = document.documentElement.clientWidth;
+      mainComponent.style.left = (vpWidth - mainCompWidth) / 2 + "px";
+    } else {
+      window.location.reload();
+    }
+  }
+</script>
+
+<!-- Light and dark theme toggle -->
+<!-- TODO: 
+  - Replace hardcoded urls?
+  {{ '/assets/css/just-the-docs-light.css' | relative_url }}
+ -->
+<script>
+  var currentTheme = "";
+  const toggleThemeButton = document.getElementById("toggle-theme-button");
+
+  const lightIcon = document.getElementById("light-icon");
+  const darkIcon = document.getElementById("dark-icon");
+
+  const defaultTheme = document.getElementsByTagName("link")[0];
+  const lightThemeHTML =
+    '<link id="light-theme" rel="stylesheet" href="/blog/assets/css/just-the-docs-light.css"/>';
+  const darkThemeHTML =
+    '<link id="dark-theme" rel="stylesheet" href="/blog/assets/css/just-the-docs-dark.css"/>';
+
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    currentTheme = "dark";
+    toggleThemeButton.setAttribute("title", "Switch to light mode");
+    darkIcon.setAttribute("display", "none");
+    lightIcon.setAttribute("display", "block");
+  } else {
+    currentTheme = "light";
+    toggleThemeButton.setAttribute("title", "Switch to dark mode");
+    darkIcon.setAttribute("display", "block");
+    lightIcon.setAttribute("display", "none");
+  }
+
+  function removeBothThemes() {
+    const lightTheme = document.getElementById("light-theme");
+    const darkTheme = document.getElementById("dark-theme");
+    if (lightTheme !== null) {
+      lightTheme.remove();
+    }
+    if (darkTheme !== null) {
+      darkTheme.remove();
+    }
+  }
+
+  function darkOn() {
+    removeBothThemes();
+    defaultTheme.insertAdjacentHTML("afterend", darkThemeHTML);
+    currentTheme = "dark";
+    localStorage.setItem("currentThemeLS", "dark");
+
+    toggleThemeButton.setAttribute("title", "Switch to light mode");    
+    lightIcon.setAttribute("display", "block");
+    darkIcon.setAttribute("display", "none");
+  }
+
+  function lightOn() {
+    removeBothThemes();
+    defaultTheme.insertAdjacentHTML("afterend", lightThemeHTML);
+    currentTheme = "light";
+    localStorage.setItem("currentThemeLS", "light");
+
+    toggleThemeButton.setAttribute("title", "Switch to dark mode");    
+    lightIcon.setAttribute("display", "none");
+    darkIcon.setAttribute("display", "block");
+  }
+
+  function toggleTheme() {
+    if (currentTheme == "dark") {
+      lightOn();
+    } else {
+      darkOn();
+    }
+    /* if viz: window reload 
+    if (document.getElementById('tda-example-viz') !== null) {
+      window.location.reload();
+    }
+    */
+  }
+
+  if (localStorage.getItem("currentThemeLS") !== null) {
+    const currentThemeLS = localStorage.getItem("currentThemeLS");
+    if (currentThemeLS !== currentTheme) {
+      if (currentThemeLS == "dark") {
+        darkOn();
+      } else {
+        lightOn();
+      }
+    }
+  }
+</script>

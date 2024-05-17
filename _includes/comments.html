@@ -1,31 +1,29 @@
-<section class="comments" id="comment-section">
-  <!-- <hr> -->
-  {% if site.data.comments[page.slug] %}
-  <!-- Existing comments -->
-  <div class="comments__existing">
-    <h2>Comments</h2>
-    {% assign comments = site.data.comments[page.slug] | where_exp: "item", "item.replying_to_uid == ''" %}
-    {% assign comments_by_date = comments | sort: 'date' | reverse %}
-    <!-- List main comments in reverse date order, newest first. List replies in date order, oldest first. -->
-    {% for comment in comments_by_date %}
-    {%- assign email           = comment.email %}
-    {%- assign name            = comment.name %}
-    {%- assign url             = comment.url %}
-    {%- assign date            = comment.date %}
-    {%- assign message         = comment.message %}
-    {%- assign uid             = comment._id %}
-    {% include comment.html is_reply=false uid=uid replying_to=0 email=email name=name url=url date=date message=message uid=uid %}
-    {% endfor %}
-  </div>
+<section class="comments">
+  {% assign slug = page.name | remove_first: ".md" %}
+  {% if site.data.comments[slug] %}
+    <div class="comments-existing">
+      <h2>Comments</h2>
+      {% assign comments = site.data.comments[slug] | where_exp: "item", "item.replying_to_uid == ''" %}
+      {% assign comments_by_date = comments | sort: 'date' %}
+      {% for comment in comments_by_date %}
+      {% assign comment_id = comment._id | prepend: 'comment-' %}
+      <article class="comment">
+        <span class="comment-author">
+          <a href="#{{ comment_id}}" title="Permalink to this comment">{{- comment.name | strip_html }}</a>
+        </span>
+        <span class="comment-date">
+          • {{- comment.date | date:" %B %eth, %Y %H:%M" -}}
+        </span>
+        <div class="comment-body">
+          {{ comment.message }}
+        </div>
+        <hr style="border-top: .5px solid rgb(74, 73, 73); background: transparent; margin-bottom: 10px;">
+      </article>      
+      {% endfor %}
   {% endif %}
-
-  <!-- New comment form -->
-  <div id="respond" class="comment__new">
+  
+  <!-- Add comment form -->
+  <div id="respond" class="comment-new">
     {% include comment_form.html %}
   </div>
 </section>
-
-<!-- TODO: replace with local version of jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="{{ '/assets/main.js' | relative_url }}"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>

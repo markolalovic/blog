@@ -1,39 +1,23 @@
 ---
 layout: default
 ---
+<div id="my-index">
+    <h1 class="my-index-title">{{ page.title }}</h1>
+    {% assign posts_by_date = site.my_posts | sort: 'date'  | reverse %}
+    {%- for post in posts_by_date -%}
+    <div class="my-index-post-div">
+      {% assign slug = post.name | remove_first: ".md" %}
+      {% assign my_post_link = slug %}
+      <!-- {{ my_post_link | inspect }} -->
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-  {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        <div>
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <span class="post-meta">{{ post.date | date: date_format }}</span>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-          <span class="post-description">{{ post.subtitle | escape }}</span>
-          {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-          {%- endif -%}
-        </div>
-        <!-- e.g.: feature_image: posts/ols-regression/problem.svg -->
-        {% if post.feature_image %}
-          <div class="feature-image">
-            <img src="{{ '/assets/' | append: post.feature_image | relative_url }}" />
-          </div>
-        {% endif %}
-      </li>
-      {%- endfor -%}
-    </ul>
-    <p class="rss post-meta">
-      Subscribe <a class="btn btn-rss" href="/blog/feed.xml" target="_blank">via RSS</a>
-    </p>
-  {%- endif -%}
+      <span class="my-index-post-meta">
+        {{ post.date | date: "%b %-d, %Y" }} • {{ post.keywords }}
+      </span>
+      <a class="my-index-post-link" href="{{ my_post_link }}">{{ post.title | escape }}</a>
+      <span class="my-index-post-subtitle">{{ post.subtitle }}</span>
+      <a href="{{ my_post_link }}">more ...</a>
+    </div>
+    {%- endfor -%}
 </div>
+
+

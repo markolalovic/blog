@@ -1,0 +1,52 @@
+    <!-- Collapse -->
+    <svg width="24" height="24" id="collapse-icon" display="none">
+    <defs>
+      <clipPath id="round-corner">
+          <rect x="2" y="2" width="8" height="20" rx="1.5" ry="1.5"/>
+        </clipPath>
+    </defs>      
+    <rect 
+      fill="none" 
+      x="2" 
+      y="2" 
+      width="20" 
+      height="20" 
+      rx="1.6" 
+      stroke="rgb(110, 110, 110)" 
+      stroke-width="1.2" />
+    <rect 
+      fill="rgb(110, 110, 110)" 
+      x="2" 
+      y="2" 
+      width="8" 
+      height="20"
+      clip-path="url(#round-corner)"
+      stroke="none"
+      stroke-width="1.2" />      
+    <line 
+      x1="10"
+      y1="2.4"
+      x2="10"
+      y2="21.6"
+      stroke-width="1.2"
+      stroke="rgb(110, 110, 110)" />
+    </svg>
+    <!-- Expand --> 
+    <svg width="24" height="24" id="expand-icon" display="none">
+    <rect 
+      fill="none" 
+      x="2" 
+      y="2" 
+      width="20" 
+      height="20" 
+      rx="1.6" 
+      stroke="rgb(110, 110, 110)" 
+      stroke-width="1.2" />
+    <line 
+      x1="10"
+      y1="2.4"
+      x2="10"
+      y2="21.6"
+      stroke-width="1.2"
+      stroke="rgb(110, 110, 110)" />
+    </svg>

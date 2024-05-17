@@ -1,0 +1,352 @@
+/*
+* Layout
+*/
+.side-bar {
+  font-family: $heading-font-family;
+  // background-color: red;
+  @include mq(lg) {
+    width: calc(  (100% - #{$nav-width + $content-width}) / $my-nav-div + #{$nav-width});
+    min-width: $nav-width;
+  }
+  
+  & + .main {
+    @include mq(lg) {
+      // background-color: green;
+      margin-left: Max(
+        #{$nav-width},
+        calc((100% - #{$nav-width + $content-width}) / $my-nav-div + #{$nav-width})
+      );
+    }
+  }
+}
+
+
+
+/*
+* Navigation bar
+*/
+$nav-not-active-color: $link-color;
+$nav-active-color: $body-text-color;
+$nav-font-family: $heading-font-family;
+
+.before-pseudo-class:before {
+  color: $grey-dk-000;
+  content: "\00BB";
+  margin-right: 6px;
+}
+
+.nav-list {
+  .nav-list-item {
+    .nav-list-link {
+      color: $nav-not-active-color;
+      font-family: $nav-font-family;
+
+      &.active {
+        color: $nav-active-color;
+        text-decoration: none;
+      }
+    }      
+    .nav-list-link:hover {
+      text-decoration: underline;
+      text-decoration-color: $border-color;
+    }
+    .nav-list {
+      .nav-list-item {        
+        .nav-list-link {
+          &.active {
+            color: $nav-active-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.my-site-title {
+  font-family: $heading-font-family;
+  color: $body-text-color;
+  font-size: $font-size-7;
+  font-weight: 400;
+}
+
+/* 
+* Navigation 
+* color theme toggle and About
+*/
+.main-header {
+  font-family: $heading-font-family;
+}
+
+.aux-nav-list-item a {
+  color: $grey-dk-000;
+  // color: $body-text-color;
+}
+// .aux-nav-list-item a:hover {
+//    color: $body-text-color;
+//   //  text-decoration: underline;
+// }
+.toggle-btn {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/*
+* Typography
+*/
+.post-content {
+  font-family: $post-font-family;
+  font-style: normal;
+  font-weight: 400;
+  color: $body-text-color;
+  font-size: $font-size-5;
+  // line-height: 27px;
+	text-align: justify; 
+  strong {
+    font-weight: 700;
+  }
+}
+
+#markdown-toc {
+  font-family: $heading-font-family;  
+}
+
+.bibliography {
+  font-family: $post-font-family;
+  font-style: normal;
+  font-weight: 400;
+  color: $body-text-color;
+  font-size: $font-size-5;
+  text-align: left;
+}
+
+$heading-font-weight: 900;
+h1, h2, h3 {
+  font-family: $heading-font-family;
+  color: $body-text-color;
+  font-weight: $heading-font-weight;
+}
+
+h4,
+.text-delta {
+  @include fs-4;
+
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mono-italic {
+  font-family: $mono-font-family;
+  font-style: italic;
+}
+
+/**
+* Post
+*/
+.my-post-meta {
+  font-family: $post-font-family;
+  font-size: $font-size-6;
+  font-style: italic;
+  color: $grey-dk-000;
+  // text-align: center;
+}
+
+/**
+* My Index
+*/
+.my-index-title {
+  font-weight: 400;
+}
+.my-index-post-div {
+  margin-bottom: 2em;
+  width: $my-index-width;
+}
+.my-index-post-link {
+  font-family: $heading-font-family;
+  font-size: $font-size-7;
+  font-weight: 400;
+  display: grid;
+}
+.my-index-post-meta {
+  font-family: $post-font-family;
+  font-size: $font-size-4;
+  font-style: italic;
+  color: $grey-dk-000;
+}
+.my-index-post-subtitle {
+  font-family: $post-font-family;
+  font-size: $font-size-5;
+  display: grid;
+}
+
+/**
+* Comments form
+*/
+.form-label {
+  color: inherit;
+  display: block;
+  margin-top: 1em;
+}
+
+form input,
+form textarea,
+form button {
+  color: inherit;
+  font-size: inherit;
+  border: 1px solid #808080;
+  border-radius: 2px;
+  background: none;
+  padding: 0.4rem 0.5rem;
+  margin: 0;
+  background-color: $feedback-color; // darken
+}
+
+.wide-field {
+  width: 95%;
+}
+
+.input-field {
+  width: 55%;
+}
+
+/**
+ * Existing comments
+ */
+.comment_new {
+  padding: 0px 0px 14px 0px;
+}
+.comment-author {
+  font-family: $heading-font-family;  
+  font-size: $font-size-6;
+  color: $grey-dk-300;
+}
+.comment-date {
+  font-family: $heading-font-family;  
+  font-size: $font-size-5;
+  color: $grey-dk-100;
+}
+.comment-date {
+  font-family: $heading-font-family;  
+  text-align: left;
+  color: $grey-dk-000;
+  font-size: 14px;
+}
+.comments-existing {
+  padding: 8px 0px 0px 0px;
+}
+.comment {
+  border-top: 0px solid $grey-dk-000;
+  padding: 0px 0px 0px 0px;
+  margin-bottom: 0.5em;
+}
+
+/*
+* Footer
+*/
+.my-footer p {
+  font-family: $heading-font-family;
+}
+
+/*
+* Images - image div for an image inside
+*/
+.imgcap {
+  text-align: center;
+}
+.imgcap img {
+  max-width: 100%;
+  border: 1px solid #808080;    
+}
+
+// TODO: could replace with text-center custom class!
+.imgcap-nbd {
+  // border: 2px solid #ff0000;
+  // margin-bottom: 15px; // btw image-cap and text below
+  text-align: center;
+}
+
+.imgcap-nbd img {
+  // border: 2px solid #00ff00;
+  max-width: 100%;
+}
+
+.div-for-inline-svg {
+  // border: 2px solid #ff00ff;  
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
+}
+
+.div-dummy {
+  // border: 2px solid #ac9514;  
+  margin-top: 1.6rem;
+  margin-bottom: .5rem;
+}
+
+.width100p {
+  width: 100%;
+}
+
+.width80p {
+  width: 80%;
+}
+
+.width70p {
+  width: 70%;
+}
+
+.margin-top-correct {
+  margin-top: -1.6rem;
+}
+
+.thecap {
+  // border: 2px solid #0000ff;  
+  font-family: $post-font-family;
+  font-size: $font-size-figure;
+  color: $body-text-color;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.btn {
+  font-family: $body-font-family;
+}
+
+/*
+* Tables
+*/
+.table-wrapper {  
+  border-radius: 0;
+  box-shadow: none;
+}
+table {
+  border: $border $border-color;
+}
+table caption {
+  // border: 2px solid #0000ff;
+  margin-top: 5px;
+  font-family: $post-font-family;
+  font-size: $font-size-figure;
+  color: $body-text-color;
+  font-style: italic;
+  font-weight: 300;
+  caption-side: bottom;
+}
+
+.centerTable { margin: 0px auto; }
+
+.cfr-table th, td {
+  @include fs-3;
+
+  min-width: 1.5rem;
+  padding: $sp-2 $sp-3;
+  background-color: $table-background-color;
+  border-bottom: $border rgba($border-color, 0.5);
+  border-left: $border $border-color;
+
+  &:first-of-type {
+    border-left: 0;
+  }
+}
+

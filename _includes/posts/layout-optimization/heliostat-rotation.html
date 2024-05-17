@@ -1,0 +1,223 @@
+<div id="figure2" class="imgcap-nbd">
+  <img id="heliostat-rotation-static" src="/blog/assets/posts/layout-optimization/heliostat-rotation-static.svg" width="70%" class="invertImg">
+  <div id="heliostat-rotation-dynamic" class="div-for-inline-svg width70p">
+    <!--viewBox="0 0 158.75 66.146" test with viewBox="-10 -10 160 80" -->
+    <!-- viewBox="0 0 158.75 66.146" -->
+    <svg id="elements" width="100%" viewBox="0 0 158.75 66.146" xmlns="http://www.w3.org/2000/svg" display="none">
+    <path id="frame"
+      style="fill:none;stroke:rgba(0, 0, 0, 0.501);stroke-width:0.3;stroke-linejoin:round;stroke-opacity:1"
+      d="M.055.055h158.64V66.09H.055z" />
+    <path id="tower"
+      style="fill:rgba(184, 182, 226, 0.512);stroke:black;stroke-width:.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+      d="m18 65.599 23.346.028.102-34.15 7.18-.219 4.8-26.488H17.921Z" />
+    <path id="pylon"
+      style="fill:none;fill-opacity:1;stroke:black;stroke-width:.6;stroke-linejoin:round;stroke-opacity:1"
+      d="m84.102 51.6-.045 14.227" />
+    <circle id="H2"
+      style="fill:black;fill-opacity:1;stroke:white;stroke-width:.2;stroke-linejoin:round;stroke-opacity:1"
+      cx="84.079" cy="51.535" r="1" />
+    <circle id="R0"
+      style="fill:black;fill-opacity:1;stroke:white;stroke-width:.2;stroke-linejoin:round;stroke-opacity:1"
+      cx="48.631" cy="31.22" r="0.1" />
+    <circle id="R4"
+      style="fill:black;fill-opacity:1;stroke:white;stroke-width:.2;stroke-linejoin:round;stroke-opacity:1"
+      cx="53.398" cy="4.792" r="0.1" />
+    </svg>
+  </div>
+  <div class="thecap margin-top-correct">
+    Figure 2: Heliostat rotation.
+  </div>
+</div>
+<!-- Run viz -->
+<script>
+  function Vector(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  function add(vecU, vecV) {
+    return new Vector(vecU.x + vecV.x, vecU.y + vecV.y);
+  }
+
+  function subtract(vecU, vecV) {
+    return new Vector(vecU.x - vecV.x, vecU.y - vecV.y);
+  }
+
+  function getVector(ptP, ptQ) {
+    return subtract(ptQ, ptP);
+  }
+
+  function getPoint(elementP) {
+    var cx = parseFloat(elementP.getAttributeNS(null, "cx"));
+    var cy = parseFloat(elementP.getAttributeNS(null, "cy"));
+    return new Vector(cx, cy);
+  }
+
+  function norm(vecV) {
+    return Math.sqrt(vecV.x * vecV.x + vecV.y * vecV.y);
+  }
+
+  function scaleVector(vecV, scale) {
+    return new Vector(vecV.x * scale, vecV.y * scale);
+  }
+
+  function dotProduct(vecU, vecV) {
+    return vecU.x * vecV.x + vecU.y * vecV.y;
+  }
+
+  function perp(vecV) {
+    return new Vector(-vecV.y, vecV.x);
+  }
+
+  function intersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+    /* adapted from http://paulbourke.net/geometry/pointlineplane/ */
+    var denominator = ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+    var ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denominator;
+    var x = x1 + ua * (x2 - x1);
+    var y = y1 + ua * (y2 - y1);
+    return new Vector(x, y);
+  }
+
+  function drawPoint(name, x, y) {
+    var size = 1;
+    var ptStyle = "fill: blue; stroke: white; stroke-width: 0.1px;";  
+    var circle = document.createElementNS(svgns, "circle");
+    circle.setAttributeNS(null, "id", name);
+    circle.setAttributeNS(null, "cx", x);
+    circle.setAttributeNS(null, "cy", y);
+    circle.setAttributeNS(null, "r", size);
+    circle.setAttributeNS(null, "style", ptStyle);
+    g.appendChild(circle);
+  }
+
+  function drawLine(name, x1, y1, x2, y2, isRay) {
+    var rayStyle = "stroke-dasharray: 0.5,0.5;" + 
+    "stroke: red; stroke-width: 0.4px;";
+    var lineStyle = "stroke: black; stroke-width: 1px;";
+    var aLine = document.createElementNS(svgns, "line");
+    aLine.setAttributeNS(null, "id", name);
+    aLine.setAttributeNS(null, "x1", x1);
+    aLine.setAttributeNS(null, "y1", y1);
+    aLine.setAttributeNS(null, "x2", x2);
+    aLine.setAttributeNS(null, "y2", y2);
+    if (isRay) {
+      aLine.setAttributeNS(null, "style", rayStyle);
+    } else {
+      aLine.setAttributeNS(null, "style", lineStyle);
+    }
+    g.appendChild(aLine);
+    return aLine;
+  }
+
+  function updateLine(aLine, x1, y1, x2, y2) {
+    aLine.setAttributeNS(null, "x1", x1);
+    aLine.setAttributeNS(null, "y1", y1);
+    aLine.setAttributeNS(null, "x2", x2);
+    aLine.setAttributeNS(null, "y2", y2);
+  }
+  
+  /* Function run() to animate the diagram */
+  function run() {
+    var button = document.getElementById("runButton");
+    button.disabled = true;
+
+    /* remove static svg and add a dummy element after viz element */    
+    const svgStatic = document.getElementById("heliostat-rotation-static");
+    if (svgStatic !== null) {
+      svgStatic.remove();
+      const heliVizElement = document.getElementById("heliostat-rotation-dynamic");
+      const heliVizDummy = '<div id="heliostat-rotation-viz-dummy" class="div-dummy">';
+      heliVizElement.insertAdjacentHTML("afterend", heliVizDummy);
+    }
+    /* show the viz svg */
+    g.setAttribute("display", "block");
+
+    var step = phiStepSize;
+    var phi = 0;
+    var id = null;
+    clearInterval(id);
+    id = setInterval(frame, 5);
+
+    function frame() {
+      if (phi < Math.PI) {
+        phi += step;
+        update(phi);
+      } else {
+        clearInterval(id);
+        button.disabled = false;
+      }
+    }
+  }
+
+  function update(phi) {
+    var vecS = new Vector(Math.cos(phi), -Math.sin(phi));
+    vecS = scaleVector(vecS, radius); /* solar vector */
+    var vecRplusS = add(vecR, vecS);
+    var vecN = scaleVector(vecRplusS, radius / norm(vecRplusS)); /* normal */
+    var vecH = perp(vecN); /* vector along the heliostat */
+
+    for (var i = 0; i < nrays; i++) {
+      ptsH[i] = add(ptH2, scaleVector(vecH, -1 + 2 / (nrays - 1) * i));
+      /* draw the rays from heliostat to receiver to the sun */
+      /* intersect (ray Hi + scaled vector r) and (receiver segment R0R4) */
+      var ptHiRi = add(ptsH[i], scaleVector(vecR, scaleFactor));
+      var ptHiSi = add(ptsH[i], scaleVector(vecS, scaleFactor));
+      var ptRecRayi = intersect(
+        ptsH[i].x, ptsH[i].y, ptHiRi.x, ptHiRi.y, ptR0.x, ptR0.y, ptR4.x, ptR4.y);
+      if (phi == 0) { /* initialize by drawing the lines */
+        recRays[i] = drawLine(
+          "recRay" + i, ptsH[i].x, ptsH[i].y, ptRecRayi.x, ptRecRayi.y, true);
+        sunRays[i] = drawLine(
+          "sunRay" + i, ptsH[i].x, ptsH[i].y, ptHiSi.x, ptHiSi.y, true);
+      } else {
+        updateLine(recRays[i], ptsH[i].x, ptsH[i].y, ptRecRayi.x, ptRecRayi.y);
+        updateLine(sunRays[i], ptsH[i].x, ptsH[i].y, ptHiSi.x, ptHiSi.y);
+      }
+    }
+    if (phi == 0) {
+      heliostat = drawLine(
+        "heliostat", ptsH[0].x, ptsH[0].y, ptsH[nrays - 1].x, ptsH[nrays - 1].y);
+      drawPoint("H2-again", ptH2.x, ptH2.y);
+    } else {
+      updateLine(
+        heliostat, ptsH[0].x, ptsH[0].y, ptsH[nrays - 1].x, ptsH[nrays - 1].y);
+    }
+  }
+
+  var svgns = "http://www.w3.org/2000/svg";
+  var g = document.getElementById("elements");
+
+  var phiStepSize = 0.005;
+  var radius = 10;
+  var nrays = 10; /* discretization of sun radiation */
+  var scaleFactor = 11; /* TODO: adjust to intersect frame boundaries */
+
+  /* heliostat center H2 and receiver */
+  var heliostat = null;
+  var elementH2 = document.getElementById("H2");
+  var ptH2 = getPoint(elementH2);
+  var elementR0 = document.getElementById("R0");
+  var elementR4 = document.getElementById("R4");
+  var ptR0 = getPoint(elementR0);
+  var ptR4 = getPoint(elementR4);
+  drawLine("receiver", ptR0.x, ptR0.y, ptR4.x, ptR4.y);
+
+  /* receiver's center R2 */
+  var vectorR0R4 = getVector(ptR0, ptR4);
+  var ptR2 = add(ptR0, scaleVector(vectorR0R4, 0.5));
+  drawPoint("R2", ptR2.x, ptR2.y);
+
+  /* vector r from H2 in direction of receiver's center R2 */
+  var vecR = getVector(ptH2, ptR2);
+  vecR = scaleVector(vecR, radius / norm(vecR));
+
+  /* initialize arrays for points and rays */
+  var ptsH = new Array(nrays).fill(null);
+  var recRays = new Array(nrays).fill(null);
+  var sunRays = new Array(nrays).fill(null);
+
+  /* initialize drawing */
+  var phi = 0;
+  update(phi);
+  /* update(Math.PI/6 + 0.1); */
+</script>

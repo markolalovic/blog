@@ -1,0 +1,11 @@
+<div id="main-header" class="main-header">
+    {% if site.search_enabled != false %}
+      {% include components/search_header.html %}
+    {% else %}
+      <div></div>
+    {% endif %}
+    {% include header_custom.html %}
+    
+    <!-- include my custom aux_nav -->
+    {% include components/aux_nav.html %}
+  </div>
