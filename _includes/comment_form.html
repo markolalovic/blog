@@ -6,7 +6,7 @@
   <input type="hidden" name="subject" value="Comment to blog post {{ site.time | date_to_rfc822 }}">
   {% assign redirect_url = "/thanks.html" | prepend: site.baseurl | prepend: site.url %}
   <!-- DEBUG: hard coded redirect_url -->
-  <input type="hidden" name="redirectTo" value="https://lalovic.me/blog/thanks">
+  <input type="hidden" name="redirectTo" value="https://lalovic.io/blog/thanks">
 
   <textarea class="wide-field" id="message" name="message" rows="8" cols="68" 
   placeholder="Your comment (LaTeX markup accepted)" required></textarea>

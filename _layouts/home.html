@@ -8,8 +8,6 @@ layout: default
     <div class="my-index-post-div">
       {% assign slug = post.name | remove_first: ".md" %}
       {% assign my_post_link = slug %}
-      <!-- {{ my_post_link | inspect }} -->
-
       <span class="my-index-post-meta">
         {{ post.date | date: "%b %-d, %Y" }} • {{ post.keywords }}
       </span>

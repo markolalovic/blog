@@ -1,16 +1,13 @@
 $color-scheme: light !default;
 $grey-dk-100: rgb(50, 50, 50); // body-text-color
 $grey-dk-000: rgb(115, 115, 115); // meta color
-$mylinkcolor: rgb(84, 46, 236); // default is $purple-000
-$blue-000: rgb(27, 117, 208); // adjust button color
-$border-color: #a9a9a969;
 
 $body-background-color: $white !default;
 $body-heading-color: $grey-dk-300 !default;
 $body-text-color: $grey-dk-100 !default;
-$link-color: $purple-000 !default; // $mylinkcolor
+$link-color: $purple-000 !default;
 $nav-child-link-color: $grey-dk-100 !default;
-$sidebar-color: $grey-lt-000 !default; // darken($body-background-color, 3%);
+$sidebar-color: $grey-lt-000 !default;
 
 $base-button-color: #f7f7f7 !default;
 $btn-primary-color: $purple-100 !default;

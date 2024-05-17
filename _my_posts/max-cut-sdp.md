@@ -5,7 +5,7 @@ title:  "Max-Cut and Goemans-Williamson"
 subtitle: "The famous semidefinite programming relaxation and the duality with the Sum-of-Squares hierarchy framework."
 date: "2022-08-31"
 nav_order: 9
-keywords: Maximum Cut, approximation algorithms
+keywords: maximum cut, semidefinite programming, approximation algorithms
 refs: max-cut-sdp
 ---
 

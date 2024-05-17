@@ -1,21 +1,17 @@
 ---
 layout: default
 ---
-<!-- could add fs-7 for smaller h1 -->
 <h1 class="fs-7">{{ page.title }}</h1>
 <p class="my-post-meta">
   {{ site.author }} &nbsp;
   {{ page.date | date: "%b %-d, %Y" }}
 </p>
-<!--  Last modified: {{ page.last_modified_at | date: "%b %-d, %Y" }} • -->
 <p class="post-content">
   <strong>TLDR:</strong> {{ page.subtitle }}
 </p>
-
 <div class="post-content">
   {{ content }}
 </div>
-
 <div>
-    {% include comments.html %}
+  {% include comments.html %}
 </div>

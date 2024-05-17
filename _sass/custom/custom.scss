@@ -3,7 +3,6 @@
 */
 .side-bar {
   font-family: $heading-font-family;
-  // background-color: red;
   @include mq(lg) {
     width: calc(  (100% - #{$nav-width + $content-width}) / $my-nav-div + #{$nav-width});
     min-width: $nav-width;
@@ -11,7 +10,6 @@
   
   & + .main {
     @include mq(lg) {
-      // background-color: green;
       margin-left: Max(
         #{$nav-width},
         calc((100% - #{$nav-width + $content-width}) / $my-nav-div + #{$nav-width})
@@ -19,8 +17,6 @@
     }
   }
 }
-
-
 
 /*
 * Navigation bar
@@ -79,12 +75,8 @@ $nav-font-family: $heading-font-family;
 
 .aux-nav-list-item a {
   color: $grey-dk-000;
-  // color: $body-text-color;
 }
-// .aux-nav-list-item a:hover {
-//    color: $body-text-color;
-//   //  text-decoration: underline;
-// }
+
 .toggle-btn {
   background-color: inherit;
   border: none;
@@ -100,7 +92,6 @@ $nav-font-family: $heading-font-family;
   font-weight: 400;
   color: $body-text-color;
   font-size: $font-size-5;
-  // line-height: 27px;
 	text-align: justify; 
   strong {
     font-weight: 700;
@@ -149,7 +140,6 @@ h4,
   font-size: $font-size-6;
   font-style: italic;
   color: $grey-dk-000;
-  // text-align: center;
 }
 
 /**
@@ -160,7 +150,6 @@ h4,
 }
 .my-index-post-div {
   margin-bottom: 2em;
-  width: $my-index-width;
 }
 .my-index-post-link {
   font-family: $heading-font-family;
@@ -199,7 +188,7 @@ form button {
   background: none;
   padding: 0.4rem 0.5rem;
   margin: 0;
-  background-color: $feedback-color; // darken
+  background-color: $feedback-color;
 }
 
 .wide-field {
@@ -259,27 +248,21 @@ form button {
   border: 1px solid #808080;    
 }
 
-// TODO: could replace with text-center custom class!
 .imgcap-nbd {
-  // border: 2px solid #ff0000;
-  // margin-bottom: 15px; // btw image-cap and text below
   text-align: center;
 }
 
 .imgcap-nbd img {
-  // border: 2px solid #00ff00;
   max-width: 100%;
 }
 
 .div-for-inline-svg {
-  // border: 2px solid #ff00ff;  
   display: inline-block;
   text-align: center;
   max-width: 100%;
 }
 
 .div-dummy {
-  // border: 2px solid #ac9514;  
   margin-top: 1.6rem;
   margin-bottom: .5rem;
 }
@@ -301,7 +284,6 @@ form button {
 }
 
 .thecap {
-  // border: 2px solid #0000ff;  
   font-family: $post-font-family;
   font-size: $font-size-figure;
   color: $body-text-color;
@@ -324,7 +306,6 @@ table {
   border: $border $border-color;
 }
 table caption {
-  // border: 2px solid #0000ff;
   margin-top: 5px;
   font-family: $post-font-family;
   font-size: $font-size-figure;
@@ -350,3 +331,7 @@ table caption {
   }
 }
 
+// Buttons blue-000 -> link-color :)
+.btn-blue {
+  @include btn-color($white, $link-color);
+}

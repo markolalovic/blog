@@ -1,5 +1,6 @@
-    <!-- Sun -->
-    <svg width="24" height="24" id="light-icon" display="none">
+<!-- Sun -->
+<svg width="24" height="24" id="light-icon" display="none">
+  <g transform="translate(0,1) scale( 0.9 )">    
     <circle 
       cx="12" 
       cy="12" 
@@ -26,9 +27,11 @@
     <use href="#ray" transform="rotate(225 12 12)" />
     <use href="#ray" transform="rotate(270 12 12)" />
     <use href="#ray" transform="rotate(315 12 12)" />
-    </svg>
-    <!-- Moon -->
-    <svg width="24" height="24" id="dark-icon" display="none">
+  </g>        
+</svg>
+<!-- Moon -->
+<svg width="24" height="24" id="dark-icon" display="none">
+  <g transform="translate(0,1) scale( 0.9 )">    
     <path
       fill="rgb(110, 110, 110)"
       d="
@@ -36,4 +39,5 @@
         A 10 10 0 1 0 18, 20
         A 10 10 0 0 1 18, 4"
     />
-    </svg>
+  </g>
+</svg>
