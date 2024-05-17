@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="425.48096"
+   height="227.87212"
+   viewBox="0 0 112.57517 60.291164"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="energy-costs.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#37c84a"
+     borderopacity="1"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showborder="true"
+     borderlayer="true"
+     inkscape:zoom="1.9149818"
+     inkscape:cx="161.62033"
+     inkscape:cy="76.763132"
+     inkscape:window-width="1840"
+     inkscape:window-height="1027"
+     inkscape:window-x="81"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="true">
+    <sodipodi:guide
+       position="-10.115505,316.5559"
+       orientation="0,-1"
+       id="guide3"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-42.746425,250.12169"
+       orientation="1,0"
+       id="guide4"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-49.389846,-26.394729)">
+    <switch
+       id="switch10"
+       transform="matrix(0.14138787,0,0,0.14138787,29.130727,22.949234)"
+       style="font-size:35px">
+      <text
+         y="638.75"
+         id="trsvg26"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan73" /></text>
+    </switch>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;font-family:Arial;-inkscape-font-specification:Arial;fill:none;stroke:#44aa66;stroke-width:1.32292;stroke-linecap:square"
+       x="27.941446"
+       y="114.6967"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:1.32292"
+         x="27.941446"
+         y="114.6967" /></text>
+    <path
+       stroke="#000000"
+       stroke-width="0.0353469"
+       d="m 67.18239,28.405128 0.0065,54.26935 m 5.199414,-54.26935 0.0065,53.19462 m 5.198338,-53.19462 0.0065,54.26935 m 5.199413,-54.26935 0.0065,53.19462 m 5.199414,-53.19462 0.0065,54.26935 m 5.199413,-54.26935 0.0065,53.19462 m 5.198339,-53.19462 0.0065,54.26935 m 5.199409,-54.26935 0.007,53.19462 m 5.19941,-53.19462 0.007,54.26935 m 5.1994,-54.26935 0.007,53.19462 m 5.19834,-53.19462 0.007,54.26935 m 5.19941,-54.26935 0.007,53.19462 m 5.19941,-53.19462 0.007,54.26935"
+       id="path10-7"
+       sodipodi:nodetypes="cccccccccccccccccccccccccc"
+       style="stroke:#4d4d4d;stroke-width:0.0760127;stroke-dasharray:none;stroke-opacity:0.60000002" />
+    <path
+       stroke="#000000"
+       stroke-width="0.0706941"
+       stroke-dasharray="10,20"
+       d="m 65.839408,28.387648 63.826122,0.0443 m -62.487447,5.86669 62.487447,0.0443 m -63.826122,5.86669 63.826122,0.0443 m -62.487447,5.86668 62.487447,0.0443 m -63.826122,5.8667 63.826122,0.0443 m -62.487447,5.86669 62.487447,0.0443 m -63.826122,5.86669 63.826122,0.0443 m -62.487447,5.8667 62.487447,0.0443 m -63.826122,5.86669 63.826122,0.0443 m -62.487447,5.86669 62.487447,0.0443"
+       id="path4-02"
+       style="stroke:#4d4d4d;stroke-width:0.0760127;stroke-dasharray:none;stroke-opacity:0.60000002"
+       sodipodi:nodetypes="cccccccccccccccccccc" />
+    <text
+       y="41.280201"
+       id="trsvg23-ca-5"
+       systemLanguage="ca"
+       style="font-size:3.76154px;stroke-width:0.107473"
+       x="58.56749"><tspan
+         id="trsvg6-ca-9"
+         style="stroke-width:0.107473">30</tspan></text>
+    <text
+       y="41.280201"
+       id="trsvg23-1"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       x="58.56749"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan76-8">$0.35</tspan></text>
+    <text
+       y="52.973915"
+       id="trsvg24-ca-0"
+       systemLanguage="ca"
+       style="font-size:3.76154px;stroke-width:0.107473"
+       x="58.56749"><tspan
+         id="trsvg7-ca-8"
+         style="stroke-width:0.107473">20</tspan></text>
+    <text
+       y="52.973915"
+       id="trsvg24-9"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       x="58.56749"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan75-5">$0.25</tspan></text>
+    <text
+       y="64.688583"
+       id="trsvg25-ca-3"
+       systemLanguage="ca"
+       style="font-size:3.76154px;stroke-width:0.107473"
+       x="58.501461"><tspan
+         id="trsvg8-ca-2"
+         style="stroke-width:0.107473">10</tspan></text>
+    <text
+       y="64.688583"
+       id="trsvg25-6"
+       style="font-size:2.70838px;stroke-width:0.107473"
+       x="58.501461"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.70838px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan74-6">$0.15</tspan></text>
+    <text
+       x="65.331131"
+       id="trsvg27-ca-4"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         id="trsvg10-ca-4"
+         style="stroke-width:0.107473">2010</tspan></text>
+    <text
+       x="65.331131"
+       id="trsvg27-2"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan78-9">'10</tspan></text>
+    <text
+       x="86.062401"
+       id="trsvg28-ca-8"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.574051"><tspan
+         id="trsvg11-ca-92"
+         style="stroke-width:0.107473">2015</tspan></text>
+    <text
+       x="86.062401"
+       id="trsvg28-5"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.574051"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan79-6">'14</tspan></text>
+    <text
+       x="117.19334"
+       id="trsvg29-ca-2"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         id="trsvg12-ca-8"
+         style="stroke-width:0.107473">2020</tspan></text>
+    <text
+       x="117.19334"
+       id="trsvg29-0"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan80-0">'20</tspan></text>
+    <text
+       y="99.068092"
+       fill="#000000"
+       id="trsvg31-ca-2"
+       systemLanguage="ca"
+       style="font-size:4.29891px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"
+       x="167.82214"><tspan
+         id="trsvg14-ca-5"
+         style="stroke-width:0.107178;stroke-dasharray:none">Concentració solar</tspan></text>
+    <text
+       y="68.495316"
+       fill="#000000"
+       id="trsvg31-8"
+       x="160.17896"
+       style="font-size:2.86594px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';stroke-width:0.107178;stroke-dasharray:none"
+         id="tspan81-0">Concentrating solar</tspan></text>
+    <text
+       y="103.61867"
+       fill="#000000"
+       id="trsvg32-ca-2"
+       systemLanguage="ca"
+       style="font-size:4.29891px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"
+       x="158.45197"><tspan
+         id="trsvg15-ca-3"
+         style="stroke-width:0.107178;stroke-dasharray:none">Eòlica marina</tspan></text>
+    <text
+       y="72.934494"
+       fill="#000000"
+       id="trsvg32-3"
+       x="150.7345"
+       style="font-size:2.86594px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107178;stroke-dasharray:none"
+         id="tspan82-2">Offshore wind</tspan></text>
+    <text
+       y="107.20676"
+       fill="#000000"
+       id="trsvg33-ca-9"
+       systemLanguage="ca"
+       style="font-size:4.29891px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"
+       x="163.54002"><tspan
+         id="trsvg16-ca-1"
+         style="stroke-width:0.107178;stroke-dasharray:none">Solar fotovoltaica</tspan></text>
+    <text
+       y="76.63398"
+       fill="#000000"
+       id="trsvg33-6"
+       x="155.89684"
+       style="font-size:2.86594px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107178;stroke-dasharray:none"
+         id="tspan83-3">Solar photovoltaic</tspan></text>
+    <text
+       y="110.66247"
+       fill="#000000"
+       id="trsvg34-ca-1"
+       systemLanguage="ca"
+       style="font-size:4.29891px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"
+       x="158.43088"><tspan
+         id="trsvg17-ca-7"
+         style="stroke-width:0.107178;stroke-dasharray:none">Eòlica terrestre</tspan></text>
+    <text
+       y="80.089684"
+       fill="#000000"
+       id="trsvg34-9"
+       x="150.78769"
+       style="font-size:2.86594px;text-anchor:end;stroke-width:0.107178;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107178;stroke-dasharray:none"
+         id="tspan84-6">Onshore wind</tspan></text>
+    <path
+       stroke="#5599cc"
+       stroke-width="0.706941"
+       fill="none"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="m 67.18898,58.310418 5.205978,-1.06398 5.204902,3.66482 5.205976,3.07372 5.205977,-3.90126 5.205977,4.01948 5.204903,2.9555 5.205967,1.30042 5.20598,0.70932 5.20598,1.77329 5.2049,0.35467 5.20598,1.06397 5.20598,-0.23643"
+       id="path26-2"
+       style="stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke:#1770b8;stroke-opacity:1" />
+    <path
+       stroke="#ffbb33"
+       stroke-width="0.706941"
+       fill="none"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="m 67.18898,28.991868 5.205978,13.35886 5.204902,9.93048 5.205976,6.73853 5.205977,2.24618 5.205977,5.08346 5.204903,1.89152 5.205967,2.83728 5.20598,1.65508 5.20598,1.06398 5.2049,0.82754 5.20598,0.94576 5.20598,0.23643"
+       id="path39-6"
+       style="stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke:#f9c300;stroke-opacity:1" />
+    <path
+       stroke="#dd0022"
+       stroke-width="0.706941"
+       fill="none"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="m 67.18898,36.676168 5.205978,1.41864 5.204902,1.30042 5.205976,8.86649 5.205977,4.01949 5.205977,1.1822 5.204903,-5.08346 5.205967,1.41864 5.20598,13.12241 5.20598,-8.98472 5.2049,13.71352 5.20598,-0.35466 5.20598,0.35466"
+       id="path14-7"
+       style="stroke:#000000;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       stroke="#44aa66"
+       stroke-width="0.706941"
+       fill="none"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="m 67.18898,68.950218 5.205978,0.5911 5.204902,0.35466 5.205976,0.5911 5.205977,1.30042 5.205977,1.30042 5.204903,0.59109 5.205967,0.47289 5.20598,1.06398 5.20598,0.82754 5.2049,0.94576 5.20598,0.47288 5.20598,0.23644"
+       id="path52-6"
+       style="stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke:#32a289;stroke-opacity:1" />
+    <text
+       x="75.703316"
+       id="trsvg27-ca-5-6"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.574051"><tspan
+         id="trsvg10-ca-7-4"
+         style="stroke-width:0.107473">2010</tspan></text>
+    <text
+       x="75.703316"
+       id="trsvg27-3-4"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.574051"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan78-4-4">'12</tspan></text>
+    <text
+       x="96.433273"
+       id="trsvg28-ca-3-7"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         id="trsvg11-ca-9-6"
+         style="stroke-width:0.107473">2015</tspan></text>
+    <text
+       x="96.433273"
+       id="trsvg28-7-7"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan79-7-7">'16</tspan></text>
+    <text
+       x="106.81069"
+       id="trsvg28-ca-5-2"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         id="trsvg11-ca-3-1"
+         style="stroke-width:0.107473">2015</tspan></text>
+    <text
+       x="106.81069"
+       id="trsvg28-3-1"
+       style="font-size:2.68156px;stroke-width:0.107473"
+       y="85.557671"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan79-3-4">'18</tspan></text>
+    <text
+       x="127.56435"
+       id="trsvg28-ca-58-7"
+       systemLanguage="ca"
+       style="font-size:3.22418px;stroke-width:0.107473"
+       y="85.583679"><tspan
+         id="trsvg11-ca-96-4"
+         style="stroke-width:0.107473">2015</tspan></text>
+    <text
+       x="127.56435"
+       id="trsvg28-0-4"
+       style="font-size:2.70838px;stroke-width:0.107473"
+       y="85.583679"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.70838px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan79-4-3">'22</tspan></text>
+    <text
+       x="51.043938"
+       y="29.586483"
+       id="trsvg21-5-0"
+       style="font-size:2.68156px;stroke-width:0.107473"><tspan
+         sodipodi:role="line"
+         id="tspan72-1-7"
+         x="51.043938"
+         y="29.586483"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.68156px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473">$0.45 / kWh</tspan></text>
+    <text
+       y="76.406021"
+       id="trsvg25-ca-7-9"
+       systemLanguage="ca"
+       style="font-size:3.76154px;stroke-width:0.107473"
+       x="60.007729"><tspan
+         id="trsvg8-ca-0-9"
+         style="stroke-width:0.107473">10</tspan></text>
+    <text
+       y="76.406021"
+       id="trsvg25-36-4"
+       style="font-size:2.70838px;stroke-width:0.107473"
+       x="60.007729"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.70838px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.107473"
+         id="tspan74-9-4">$0.5</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#666666;stroke-width:0.152025;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:0.798701"
+       d="m 129.84223,77.697258 0.009,1.48286 2.62488,0.006 v 0"
+       id="path2-7-1-1" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#666666;stroke-width:0.151928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:0.798701"
+       d="m 129.84181,75.793578 2.64517,-0.002 v 0"
+       id="path3-12" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#666666;stroke-width:0.151928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:0.798701"
+       d="m 129.84181,71.997268 2.64517,-0.002 v 0"
+       id="path3-1-2" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#666666;stroke-width:0.151928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:0.798701"
+       d="m 129.84181,67.677968 2.64517,-0.002 v 0"
+       id="path3-1-0-9" />
+  </g>
+</svg>

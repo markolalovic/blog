@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="581.93945"
+   height="228.39757"
+   viewBox="0 0 153.97148 60.430189"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="ray-tracing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#37c84a"
+     borderopacity="1"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showborder="true"
+     borderlayer="true"
+     inkscape:zoom="0.67704828"
+     inkscape:cx="285.06091"
+     inkscape:cy="391.40488"
+     inkscape:window-width="1264"
+     inkscape:window-height="919"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker18-8-3"
+       refX="40"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path18-65-84" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker18-8-5"
+       refX="40"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path18-65-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker18-8-35"
+       refX="40"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path18-65-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker18-8"
+       refX="40"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path18-65" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker18"
+       refX="40"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path18" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-29.797368,-44.875989)">
+    <g
+       id="g2"
+       transform="translate(-0.95606324,-611.91274)">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.397;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.994609"
+         d="M 31.086655,717.02042 H 184.34857 v 0"
+         id="path43-97-4" />
+      <g
+         clip-path="url(#clip4)"
+         id="g9-1"
+         transform="matrix(0.17153,0,0,0.14286222,32.272403,666.64987)"
+         style="stroke:#000000;stroke-width:2.55524;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g8-2"
+           style="stroke:#000000;stroke-width:2.55524;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 463.4,351.52 V 270.59"
+             id="path8-45"
+             style="stroke:#000000;stroke-width:2.55524;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title8-5">Segment p_1</title>
+          <desc
+             id="desc8-23">Segment p_1: Segment E, H''</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip3)"
+         id="g7-71"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#ff0000;stroke-width:2.3307;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-dasharray="2.5, 3"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#ff0000"
+           stroke-linecap="butt"
+           id="g6-1"
+           style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+          <path
+             d="M 463.4,270.59 886.27,52.465"
+             id="path6-8"
+             style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1" />
+          <title
+             id="title6-5">Segment m_1</title>
+          <desc
+             id="desc6-20">Segment m_1: Segment H'', S''</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip16)"
+         id="g33-6"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#ff0000;stroke-width:2.3307;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-dasharray="2.5, 3"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#ff0000"
+           stroke-linecap="butt"
+           id="g32-37"
+           style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+          <path
+             d="m 538.45929,280.82394 347.72,-179.36"
+             id="path32-5"
+             style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1" />
+          <title
+             id="title32-87">Segment c_7</title>
+          <desc
+             id="desc32-716">Segment c_7: Segment H2'', D_5</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip17)"
+         id="g35-43"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#ff0000;stroke-width:2.3307;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-dasharray="2.5, 3"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#ff0000"
+           stroke-linecap="butt"
+           id="g34-2"
+           style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+          <path
+             d="M 501.47,276.53 887.27,77.524"
+             id="path34-2"
+             style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1" />
+          <title
+             id="title34-11">Segment d_7</title>
+          <desc
+             id="desc34-12">Segment d_7: Segment M2'', C_5</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip18)"
+         id="g37-3"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#ff0000;stroke-width:2.3307;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-dasharray="2.5, 3"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#ff0000"
+           stroke-linecap="butt"
+           id="g36-0"
+           style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+          <path
+             d="M 425.32,264.66 887.27,26.378"
+             id="path36-0"
+             style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1" />
+          <title
+             id="title36-45">Segment e_7</title>
+          <desc
+             id="desc36-70">Segment e_7: Segment M1'', B_5</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip19)"
+         id="g39-86"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#ff0000;stroke-width:2.3307;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-dasharray="2.5, 3"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#ff0000"
+           stroke-linecap="butt"
+           id="g38-3"
+           style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1">
+          <path
+             d="M 387.25,258.73 887.17,0.85713"
+             id="path38-0"
+             style="stroke:#ff0000;stroke-width:2.3307;stroke-dasharray:2.3307, 2.3307;stroke-dashoffset:0;stroke-opacity:1" />
+          <title
+             id="title38-9">Segment f_8</title>
+          <desc
+             id="desc38-62">Segment f_8: Segment H1'', A_5</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <path
+         style="fill:#dbd9f0;fill-opacity:1;stroke:none;stroke-width:0.263594;stroke-dasharray:none;stroke-opacity:1"
+         d="m 45.966617,716.72144 23.097464,0.003 -0.05772,-30.87673 7.470007,-0.58144 4.566468,-25.89709 -35.057125,0.0996 z"
+         id="path38-1"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.399785;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.399785, 0.399785;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-8-3)"
+         d="M 99.001799,703.24674 77.267575,681.55876"
+         id="path24-6-0" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.399785;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.399785, 0.399785;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-8-5)"
+         d="M 105.24107,704.29508 78.002169,677.11414"
+         id="path24-6-4" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.399785;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.399785, 0.399785;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-8-35)"
+         d="M 124.69039,707.27411 80.696278,663.37361"
+         id="path24-6-6" />
+      <g
+         clip-path="url(#clip5)"
+         id="g11-3"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#000000;stroke-width:5.82988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="5"
+           fill="none"
+           stroke="#0000ff"
+           stroke-linecap="round"
+           id="g10-11"
+           style="stroke:#000000;stroke-width:5.82988;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="m 387.25,258.73 152.3,23.73"
+             id="path10-98"
+             style="stroke:#000000;stroke-width:5.82988;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title10-0">Segment r_1</title>
+          <desc
+             id="desc10-9">Segment r_1: Segment H1'', H2''</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.399785;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.399785, 0.399785;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18-8)"
+         d="M 118.42436,706.48269 79.873228,668.01359"
+         id="path24-6" />
+      <g
+         clip-path="url(#clip7)"
+         id="g15-10-8-5"
+         transform="matrix(0.17009298,0,0,0.17104573,32.758093,656.92038)"
+         style="stroke:#080808;stroke-width:1.17255;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g14-41-2-9"
+           style="stroke:#080808;stroke-width:1.17255;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 78.059,349.62 H 212.93"
+             id="path14-6-1-8"
+             style="stroke:#080808;stroke-width:1.17255;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title14-14-7-9">Segment t1</title>
+          <desc
+             id="desc14-5-6-1">Segment t1: Segment T1, T2</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip8)"
+         id="g17-6-8-2"
+         transform="matrix(0.17104573,0,0,0.16034841,32.638615,660.66318)"
+         style="stroke:#080808;stroke-width:1.20765;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g16-84-2-8"
+           style="stroke:#080808;stroke-width:1.20765;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 212.93,349.62 V 156.95"
+             id="path16-8-5-4"
+             style="stroke:#080808;stroke-width:1.20765;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title16-3-4-0">Segment t2</title>
+          <desc
+             id="desc16-9-9-1">Segment t2: Segment T2, T3</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip9)"
+         id="g19-0-9-0"
+         transform="matrix(0.17104573,0,0,0.17104573,32.638615,658.9839)"
+         style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g18-92-5-8"
+           style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="m 212.93,156.95 44.42,-3.13"
+             id="path18-72-5-1"
+             style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title18-2-3-4">Segment t3</title>
+          <desc
+             id="desc18-7-5-9">Segment t3: Segment T3, R1''</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip10)"
+         id="g21-30-0-5"
+         transform="matrix(0.17104573,0,0,0.17104573,32.638615,658.9839)"
+         style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g20-9-9-9"
+           style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 284.11,2.028 78.059,2.815"
+             id="path20-0-7-0"
+             style="stroke:#080808;stroke-width:1.16928;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title20-1-1-2">Segment t6</title>
+          <desc
+             id="desc20-5-6-3">Segment t6: Segment R2'', T4</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.399785;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:0.399785, 0.399785;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker18)"
+         d="M 111.47431,705.05373 78.837589,672.48644"
+         id="path24" />
+      <g
+         clip-path="url(#clip6)"
+         id="g13-2"
+         transform="matrix(0.17153,0,0,0.17153,32.305077,658.99136)"
+         style="stroke:#070707;stroke-width:5.82988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="5"
+           fill="none"
+           stroke="#0000ff"
+           stroke-linecap="round"
+           id="g12-42"
+           style="stroke:#070707;stroke-width:5.82988;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 257.35,153.82 284.11,2.028"
+             id="path12-35"
+             style="stroke:#070707;stroke-width:5.82988;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title12-8">Segment a_1</title>
+          <desc
+             id="desc12-4">Segment a_1: Segment R1'', R2''</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip11)"
+         id="g23-50-0-5"
+         transform="matrix(0.17104573,0,0,0.16510513,32.60958,658.99878)"
+         style="stroke:#080808;stroke-width:1.19013;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="0.69804"
+           stroke-linejoin="round"
+           stroke-width="2.5"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g22-2-5-9"
+           style="stroke:#080808;stroke-width:1.19013;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="M 78.059,2.815 V 349.62"
+             id="path22-83-3-0"
+             style="stroke:#080808;stroke-width:1.19013;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title22-9-6-1">Segment t4</title>
+          <desc
+             id="desc22-9-3-3">Segment t4: Segment T4, T1</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <rect
+         style="fill:none;fill-opacity:0.0980392;stroke:#808080;stroke-width:0.264583;stroke-linecap:square;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect146-1-1-4"
+         width="153.70689"
+         height="60.147881"
+         x="30.885723"
+         y="656.92102" />
+      <g
+         clip-path="url(#clip18)"
+         id="g37-9-7"
+         transform="matrix(0.18017472,0,0,0.18018564,50.394205,658.16657)"
+         style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           stroke-opacity="1"
+           stroke-linejoin="round"
+           fill="none"
+           stroke="#000000"
+           stroke-linecap="round"
+           id="g36-8-9"
+           style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.1;stroke-dasharray:none;stroke-opacity:1">
+          <path
+             d="m 160.73,78.215 c 0,2.762 -2.24,5 -5,5 -2.76,0 -5,-2.238 -5,-5 0,-2.761 2.24,-5 5,-5 2.76,0 5,2.239 5,5 z"
+             id="path36-8-0"
+             style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.1;stroke-dasharray:none;stroke-opacity:1" />
+          <title
+             id="title36-87-2">Point R_3</title>
+          <desc
+             id="desc36-3-3">Point R_3: Point on yAxis</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         clip-path="url(#clip21)"
+         id="g43-1-9"
+         transform="matrix(0.18181818,0,0,0.18181818,48.521735,656.38927)"
+         style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+        <g
+           fill="#000000"
+           fill-rule="nonzero"
+           fill-opacity="1"
+           stroke="none"
+           id="g42-3-9"
+           style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1">
+          <path
+             d="m 353.4,270.88 c 0,2.77 -2.24,5 -5,5 -2.76,0 -5,-2.23 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+             id="path42-80-7"
+             style="fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1" />
+          <title
+             id="title42-81-0">Point H_3</title>
+          <desc
+             id="desc42-1-3">H_3 = (5, 45)</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g
+         fill="#000000"
+         fill-opacity="1"
+         id="id-c5b219b3-1153-4b4c-9544-2f6625432c31-9"
+         transform="matrix(0.352778,0,0,0.352778,21.641484,623.14939)">
+    <g
+   transform="translate(148.712,134.765)"
+   id="g5546-86"><path
+   d="m 4.34375,-6.1875 c 0.046875,-0.140625 0.046875,-0.15625 0.0625,-0.15625 0.0625,-0.03125 0.5,-0.03125 0.75,-0.03125 0.90625,0 1.84375,0 1.84375,0.828125 0,0.015625 -0.046875,0.984375 -0.5625,1.5 C 6.296875,-3.90625 5.859375,-3.59375 4.859375,-3.59375 H 3.703125 Z M 6.3125,-3.375 c 1.78125,-0.484375 2.09375,-1.4375 2.09375,-1.9375 0,-1 -1.0625,-1.53125 -2.546875,-1.53125 h -3.46875 c -0.203125,0 -0.359375,0 -0.359375,0.296875 0,0.171875 0.125,0.171875 0.40625,0.171875 0.21875,0 0.40625,0.015625 0.609375,0.03125 L 1.625,-0.671875 C 1.578125,-0.515625 1.578125,-0.5 1.390625,-0.484375 1.21875,-0.46875 1.03125,-0.46875 0.875,-0.46875 c -0.265625,0 -0.28125,0 -0.328125,0.015625 -0.125,0.078125 -0.125,0.234375 -0.125,0.28125 C 0.421875,-0.15625 0.4375,0 0.640625,0 c 0.25,0 0.515625,-0.015625 0.765625,-0.015625 0.234375,0 0.484375,-0.015625 0.734375,-0.015625 C 2.46875,-0.03125 3.3125,0 3.65625,0 3.734375,0 3.8125,0 3.875,-0.0625 3.921875,-0.125 3.9375,-0.28125 3.9375,-0.296875 3.9375,-0.46875 3.796875,-0.46875 3.53125,-0.46875 3.3125,-0.46875 3.125,-0.484375 2.921875,-0.484375 l 0.6875,-2.75 H 4.8125 c 0.296875,0 0.984375,0.0625 0.984375,0.8125 0,0.140625 -0.078125,0.5 -0.15625,0.75 C 5.546875,-1.25 5.5,-1.109375 5.5,-0.953125 c 0,1.046875 1.34375,1.125 1.859375,1.125 1.046875,0 1.421875,-1 1.421875,-1.15625 0,-0.1875 -0.171875,-0.1875 -0.234375,-0.1875 -0.171875,0 -0.203125,0.0625 -0.25,0.203125 -0.125,0.40625 -0.484375,0.78125 -0.859375,0.78125 -0.265625,0 -0.453125,-0.109375 -0.453125,-0.609375 0,-0.15625 0,-0.3125 0.140625,-1.109375 0.015625,-0.125 0.046875,-0.3125 0.046875,-0.390625 0,-0.390625 -0.21875,-0.84375 -0.859375,-1.078125 z m 0,0"
+   id="id-1e521029-55a8-4394-8d9c-20a7e1bb7366-5" />
+
+      </g>
+</g>
+      <g
+         fill="#000000"
+         fill-opacity="1"
+         id="id-21ef20ae-32a5-4adf-a9d0-1d85c123d0af-7"
+         transform="matrix(0.352778,0,0,0.352778,56.103462,662.24158)">
+    <g
+   transform="translate(159.107,134.765)"
+   id="g3657-6"><path
+   d="M 9.078125,-6.328125 C 9.296875,-6.375 9.65625,-6.375 9.765625,-6.375 c 0.125,0 0.328125,0 0.359375,-0.03125 0.109375,-0.0625 0.109375,-0.25 0.109375,-0.25 0,-0.125 -0.09375,-0.1875 -0.21875,-0.1875 -0.25,0 -0.5,0.03125 -0.75,0.03125 -0.25,0 -0.5,0 -0.75,0 -0.265625,0 -0.515625,0 -0.765625,0 -0.265625,0 -0.53125,-0.03125 -0.796875,-0.03125 -0.078125,0 -0.28125,0 -0.28125,0.296875 0,0.171875 0.125,0.171875 0.421875,0.171875 0.203125,0 0.390625,0.015625 0.609375,0.03125 L 7.0625,-3.78125 h -3.25 l 0.625,-2.546875 C 4.65625,-6.375 5,-6.375 5.109375,-6.375 c 0.140625,0 0.328125,0 0.375,-0.03125 0.09375,-0.0625 0.109375,-0.25 0.109375,-0.25 0,-0.125 -0.09375,-0.1875 -0.21875,-0.1875 -0.25,0 -0.515625,0.03125 -0.765625,0.03125 -0.25,0 -0.5,0 -0.734375,0 -0.265625,0 -0.53125,0 -0.78125,0 -0.25,0 -0.515625,-0.03125 -0.78125,-0.03125 -0.09375,0 -0.28125,0 -0.28125,0.296875 0,0.171875 0.125,0.171875 0.40625,0.171875 0.21875,0 0.40625,0.015625 0.609375,0.03125 L 1.625,-0.671875 C 1.578125,-0.515625 1.578125,-0.5 1.390625,-0.484375 1.21875,-0.46875 1.03125,-0.46875 0.875,-0.46875 c -0.265625,0 -0.28125,0 -0.328125,0.015625 -0.125,0.078125 -0.125,0.234375 -0.125,0.28125 0,0 0,0.171875 0.21875,0.171875 0.25,0 0.515625,-0.015625 0.765625,-0.015625 0.25,0 0.5,-0.015625 0.75,-0.015625 0.265625,0 0.53125,0.015625 0.78125,0.015625 C 3.1875,-0.015625 3.453125,0 3.703125,0 3.8125,0 3.890625,0 3.9375,-0.0625 3.984375,-0.125 4,-0.265625 4,-0.296875 4,-0.46875 3.859375,-0.46875 3.59375,-0.46875 3.375,-0.46875 3.1875,-0.484375 2.984375,-0.484375 L 3.6875,-3.3125 h 3.25 L 6.265625,-0.671875 C 6.234375,-0.515625 6.21875,-0.5 6.046875,-0.484375 5.875,-0.46875 5.671875,-0.46875 5.515625,-0.46875 c -0.265625,0 -0.28125,0 -0.328125,0.015625 -0.109375,0.078125 -0.109375,0.234375 -0.109375,0.28125 0,0 0,0.171875 0.21875,0.171875 0.25,0 0.5,-0.015625 0.75,-0.015625 0.25,0 0.515625,-0.015625 0.765625,-0.015625 0.25,0 0.515625,0.015625 0.765625,0.015625 0.25,0 0.53125,0.015625 0.78125,0.015625 0.09375,0 0.171875,0 0.21875,-0.0625 0.046875,-0.0625 0.0625,-0.203125 0.0625,-0.234375 0,-0.171875 -0.140625,-0.171875 -0.40625,-0.171875 -0.203125,0 -0.40625,-0.015625 -0.609375,-0.015625 z m 0,0"
+   id="id-3ff98d98-c043-455f-a35c-d8424f2c6b0a-27" />
+
+      </g>
+</g>
+    </g>
+  </g>
+</svg>
