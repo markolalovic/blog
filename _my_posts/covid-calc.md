@@ -39,11 +39,11 @@ It began as a simple bar chart that displayed mortality by age for a selected co
 
 
 ## Introduction
-At the time of writing, the impacts of Covid-19 remain largely uncertain and depend on a whole range of possibilities. Organizing the overwhelming mass of the available information in the media and literature, coming up with a reasonable working estimates and comparing multiple scenarios can be challenging As an attempt to address this problem I used publicly available data and published information to create an online tool called *Covid Calculator* that allows users to derive their own country-specific estimates.
+At the time of writing, the impacts of Covid-19 remain largely uncertain and depend on a whole range of possibilities. Organizing the overwhelming mass of the available information and coming up with a reasonable estimates can be challenging. As an attempt to address this problem I used publicly available data to create an online tool called *Covid Calculator* that allows users to derive their own country-specific estimates.
 
 The tool is focused on simple presentation and pedagogical aspects and only offers crude estimates. It uses relatively simplistic methodology outlined below.
 
-There are lots of improvements possible or more things to consider. One is to also include estimated fatality rates of Covid-19 by pre-existing health conditions. Having time to event data and applying survival analysis techniques would result in a more sensible estimates of expected years of life lost. Allowing parameters to evolve over time and comparing different time spans is another improvement.
+There are lots of improvements possible and more things to consider. One is to also include estimated fatality rates of Covid-19 by pre-existing health conditions. Having time to event data and applying survival analysis techniques would result in a more sensible estimates of expected years of life lost. Allowing parameters to evolve over time and comparing different time spans is another improvement.
 
 
 ## Age structure
