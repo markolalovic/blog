@@ -46,7 +46,7 @@ Concentrating solar power systems such as solar tower power plants concentrate s
 <div id="figure3" class="imgcap-nbd">
   <img src="/blog/assets/posts/layout-optimization/energy-costs.svg" alt="Global weighted average cost of electricity" width="80%" class="invertImg">
   <div class="thecap">
-    Figure 3: Global weighted average cost of electricity. Data from: <a href="https://www.irena.org/Data/View-data-by-topic/Costs/Global-Trends">IRENA (2023)</a>.
+    Figure 3: Global weighted average cost of electricity. Data from: <a href="https://www.irena.org/Data/View-data-by-topic/Costs/Global-Trends">IRENA (2022)</a>.
   </div>
 </div>
 

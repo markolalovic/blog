@@ -18,16 +18,16 @@
 <!-- MathJax config -->
 <script type="text/javascript">
     window.MathJax = {
-        tex: {
-            packages: ["base", "ams", "newcommand"],
+        tex: {   
+            packages: ["base", "ams", "newcommand", "boldsymbol"],
             inlineMath: [
                 ["$", "$"],
                 ["\\(", "\\)"],
             ],
-            tags: "ams",
+            tags: "ams"
         },
         loader: {
-            load: ["ui/menu", "[tex]/ams", "[tex]/newcommand"],
+            load: ["ui/menu", "[tex]/ams", "[tex]/newcommand", "[tex]/boldsymbol"],
             versionWarnings: false,
         },
     };
